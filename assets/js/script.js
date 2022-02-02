@@ -264,5 +264,14 @@ submitBtnEl.addEventListener('click', function (event) {
         .catch(err => {
             console.error(err);
         });
+
+        fetch("http://www.boredapi.com/api/activity?type=cooking")
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(data){
+            console.log(data);
+        });
+
 });
 
