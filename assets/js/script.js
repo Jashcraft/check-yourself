@@ -4,6 +4,20 @@ var submitBtnEl = document.querySelector('#submit');
 //More element variables for global access
 var mainPageEl = document.querySelector("main");
 
+//Data values for user info like state of residence and card info
+var userState = "";
+var userMood = 5;
+var userMoodText = "When I was, a young lad, my father... took me into the city.  To see a marching band.  He said son when... you grow up.  Something something blah blah blah black paraaaaaaaaaade!";
+var date = "02/02/2022";
+
+var userMoodCards;
+if (JSON.parse(localStorage.getItem("moodCards")) === null) {
+    console.log("No user cards stored.");
+    userMoodCards = [];
+}
+else {
+    userMoodCards = JSON.parse(localStorage.getItem("moodCards"));
+}
 
 
 // var states = [
@@ -280,11 +294,49 @@ var mainPageEl = document.querySelector("main");
 // });
 
 //Handler for the cityButton on the intro screen
-var logCity = function() {
 
-    //Log the city input to a variable so it can be accessed on future logins
-    //This should eventually pull the value from the intro screen's form.
-    console.log("Logged city.");
+var generateCard = function(moodText, moodScore) {
+    //Generate the elements for the main div, the header, description, score, and button
+    //div container
+    var cardContainer = document.createElement("div");
+    cardContainer.setAttribute("class", "card");
+
+    //card header
+    var cardHeader = document.createElement("h3");
+    cardHeader.textContent = "Entry from "+date;
+
+    //card brief description
+    var briefDescription = moodText.split("");
+    //Only display the first 50 characters of the user's description for a given day
+    console.log("Brief description (full):", briefDescription);
+    if (briefDescription.length > 50) {
+        briefDescription = briefDescription.splice(0, 50).join("")+"...";
+        console.log("Brief Description (Shortened): ", briefDescription);
+    }
+    var cardDescription = document.createElement("p");
+    cardDescription.textContent = briefDescription;
+
+    //card score
+    var cardScore = document.createElement("h3");
+    cardScore.textContent = "Mood Score: "+moodScore;
+
+    //card button "See Suggestions"
+    var suggestionButton = document.createElement("button");
+    suggestionButton.textContent = "See Suggestions";
+
+    //Append items to the card container
+    cardContainer.appendChild(cardHeader);
+    cardContainer.appendChild(cardDescription);
+    cardContainer.appendChild(cardScore);
+    cardContainer.appendChild(suggestionButton);
+
+    //Append the card container to the cardsDiv element
+    var cardsDiv = document.querySelector("#cardsDiv");
+    cardsDiv.appendChild(cardContainer);
+
+}
+
+var loadMoodForm = function() {
 
     //Create the new page structure...
     //Remove old elements from the page
@@ -347,8 +399,29 @@ var logCity = function() {
 
     //Append form to page
     mainPageEl.appendChild(moodForm);
+    //Also append empty divs for ease of styling when cards and sidebar are appended to it
+    var cardsDiv = document.createElement("div");
+    cardsDiv.setAttribute("id", "cardsDiv");
+    var sidebarDiv = document.createElement("div");
+    sidebarDiv.setAttribute("id", "sidebarDiv");
+
+    mainPageEl.appendChild(cardsDiv);
+    mainPageEl.appendChild(sidebarDiv);
+
+    //Call the generateCard function with parameters for state, moodText, and moodScore
+    //This should eventually be wired to a submit event listener, but for testing will be called.
+    generateCard(userMoodText, userMood);
 
 };
+
+var logCity = function() {
+
+    //Log the city input to a variable so it can be accessed on future logins
+    //This should eventually pull the value from the intro screen's form.
+    console.log("Logged user state of residence.");
+
+    loadMoodForm();
+}
 
 //listener for the city button
 var cityButtonEl = document.querySelector(".cityButton");
