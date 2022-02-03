@@ -291,17 +291,62 @@ var logCity = function() {
     mainPageEl.removeChild(document.querySelector(".container"));
 
     //Add h2 "How are you feeling today?"
-    var moodTitle = 
+    var moodTitle = document.createElement("h2");
+    moodTitle.textContent = "How are you feeling today?";
+    moodTitle.setAttribute("class", ""); //Add necessary styling here
+    mainPageEl.appendChild(moodTitle);
+
     //Add the form to hold the textarea, dropdown, and submit
+    var moodForm = document.createElement("form");
+    moodForm.setAttribute("id", "moodForm");
 
     //Add textarea "Describe your mood"
+    var moodTextLabel = document.createElement("label");
+    moodTextLabel.setAttribute("for", "moodTextArea");
+    moodTextLabel.setAttribute("id", "moodTextLabel"); 
+    moodTextLabel.setAttribute("class", ""); //Set classes for the label
+    moodTextLabel.textContent = "Describe your mood";
 
-    //Add h3 "Rate your mood"
+    var moodTextArea = document.createElement("textarea");
+    moodTextArea.setAttribute("id", "moodTextArea");
+    moodTextArea.setAttribute("class", ""); //set classes for textArea
+
+    //Add label "Rate your mood"
+    var moodRatingLabel = document.createElement("label");
+    moodRatingLabel.setAttribute("for", "moodRating");
+    moodRatingLabel.setAttribute("id", "moodRatingLabel");
+    moodRatingLabel.setAttribute("class", "");
+    moodRatingLabel.textContent = "Rate your mood today";
 
     //Add dropdown to hold number values
+    var moodRating = document.createElement("select");
+    moodRating.setAttribute("name", "moodRating");
+    moodRating.setAttribute("id", "moodRating");
+
+    //Append options to select
+    for (var i = 0; i < 5; i++) {
+        var option = document.createElement("option");
+        option.setAttribute("value", i+1);
+        option.textContent = i+1;
+        //Set styling with classes
+        moodRating.appendChild(option);
+    }
 
     //Add submit button
+    var moodSubmitButton = document.createElement("button");
+    moodSubmitButton.setAttribute("type", "submit");
+    moodSubmitButton.setAttribute("id", "moodSubmitButton");
+    moodSubmitButton.textContent = "Submit";
 
+    //Append elements to the form
+    moodForm.appendChild(moodTextLabel);
+    moodForm.appendChild(moodTextArea);
+    moodForm.appendChild(moodRatingLabel);
+    moodForm.appendChild(moodRating);
+    moodForm.appendChild(moodSubmitButton);
+
+    //Append form to page
+    mainPageEl.appendChild(moodForm);
 
 };
 
