@@ -322,6 +322,7 @@ var generateCard = function(moodText, moodScore) {
 
     //card button "See Suggestions"
     var suggestionButton = document.createElement("button");
+    suggestionButton.setAttribute("class", "suggestionButton");
     suggestionButton.textContent = "See Suggestions";
 
     //Append items to the card container
@@ -410,7 +411,11 @@ var loadMoodForm = function() {
 
     //Call the generateCard function with parameters for state, moodText, and moodScore
     //This should eventually be wired to a submit event listener, but for testing will be called.
-    generateCard(userMoodText, userMood);
+    mainPageEl.querySelector("#moodForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        generateCard(userMoodText, userMood);
+    });
+    // generateCard(userMoodText, userMood);
 
 };
 
@@ -426,3 +431,11 @@ var logCity = function() {
 //listener for the city button
 var cityButtonEl = document.querySelector(".cityButton");
 cityButtonEl.addEventListener("click", logCity);
+
+//Listener for the "see suggestions" buttons within each card
+mainPageEl.addEventListener("click", function(event) {   
+    if (event.target === document.querySelector(".suggestionButton")) {
+        //function call here
+        console.log("Loading suggestions to sidebar...");
+    };
+});
