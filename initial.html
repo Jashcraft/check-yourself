@@ -22,10 +22,30 @@
         <div class="row-1">
             <h2>Where are you?</h2>
             <div class="row">
-            <textarea id="city"></textarea>
+            <div>
+        <select name="state" id="state">
+        </select>
+        <button type="button" id="submit">Submit</button>
+    </div>
+            </div>
+            <div class="container align-items-start">
+                <div class="row align-items-around row-1">
+                    <h2>What is your mode</h2>
+                <input type="range" id="volume" name="volume"
+                min="0" max="10">
+                <label for="volume">Head space , Energy, Appetite</label>
             </div>
         <div class="row">
-            <button id="btn" class="cityButton">Search</button>
+            <div class="range-wrap">
+                <input type="range" class="range">
+                <output class="bubble"></output>
+            </div>
+            <div class="range-wrap">
+                <input type="range" class="range" min="-10" max="140">
+                <output class="bubble"></output>
+            </div>
+            <button id="btn" class="Calculate">Calculate</button>
+        </div>
         </div>
     <!--col for choices made-->
         <div class="row history">
