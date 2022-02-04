@@ -4,11 +4,11 @@ var submitBtnEl = document.querySelector('#submit-city');
 //More element variables for global access
 var mainPageEl = document.querySelector("main");
 
+var todayDate = moment().format("L");
+
 //Data values for user info like state of residence and card info
 var userState = stateSelectEl.value;
 var userMood = 5;
-var userMoodText = "When I was, a young lad, my father... took me into the city.  To see a marching band.  He said son when... you grow up.  Something something blah blah blah black paraaaaaaaaaade!";
-var date = "02/02/2022";
 
 var userMoodCards;
 if (JSON.parse(localStorage.getItem("moodCards")) === null) {
@@ -304,15 +304,16 @@ var generateCard = function(moodText, moodScore) {
 
     //card header
     var cardHeader = document.createElement("h3");
-    cardHeader.textContent = "Entry from "+date;
+    cardHeader.textContent = "Entry from "+todayDate;
 
     //card brief description
     var briefDescription = moodText.split("");
     //Only display the first 50 characters of the user's description for a given day
-    console.log("Brief description (full):", briefDescription);
-    if (briefDescription.length > 50) {
-        briefDescription = briefDescription.splice(0, 50).join("")+"...";
-        console.log("Brief Description (Shortened): ", briefDescription);
+    if (briefDescription.length > 150) {
+        briefDescription = briefDescription.splice(0, 150).join("")+"...";
+    }
+    else {
+        briefDescription = briefDescription.join("");
     }
     var cardDescription = document.createElement("p");
     cardDescription.textContent = briefDescription;
@@ -342,7 +343,7 @@ var loadMoodForm = function() {
 
     //Create the new page structure...
     //Remove old elements from the page
-    mainPageEl.removeChild(document.querySelector(".container"));
+    mainPageEl.removeChild(document.querySelector("#intro-content"));
 
     //Add h2 "How are you feeling today?"
     var moodTitle = document.createElement("h2");
@@ -414,6 +415,7 @@ var loadMoodForm = function() {
     //This should eventually be wired to a submit event listener, but for testing will be called.
     mainPageEl.querySelector("#moodForm").addEventListener("submit", function(event) {
         event.preventDefault();
+        userMoodText = moodTextArea.value;
         generateCard(userMoodText, userMood);
     });
     // generateCard(userMoodText, userMood);
@@ -430,7 +432,7 @@ var logCity = function() {
 }
 
 //listener for the city button
-var cityButtonEl = document.querySelector(".cityButton");
+var cityButtonEl = document.querySelector("#submit-city");
 cityButtonEl.addEventListener("click", logCity);
 
 //Listener for the "see suggestions" buttons within each card

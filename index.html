@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+
+<head>
     <title>Check Yourself</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content = "">
+    <meta http-equiv="X-UA-Compatible" content="">
     <link href="./assets/css/style.css" rel="stylesheet" />
     <link href="">
     <link href="">
-        </head>
-    <body class="flex-column min-100-vh">    
+</head>
+
+<body class="flex-column min-100-vh">
     <header class="hero">
-    <div class="text-center text-white">
-        <h1 class="app-title"><i class="fab checkmark"></i> check Yourself</h1>
-    </div>
+        <div class="text-center text-white">
+            <h1 class="app-title"><i class="fab checkmark"></i> check Yourself</h1>
+        </div>
     </header>
     <!-- find your location-->
-    <main class= "">
-    <div class="container align-items-start">
-        <div class="row align-items-around">
-        <div class="row-1">
-            <h2>Where are you?</h2>
-            <div class="row">
-            <div>
-        <select name="state" id="states">
-        </select>
-        <button type="button" id="submit-city">Submit</button>
-    </div>
-            </div>
-            <div class="container align-items-start">
-                <div class="row align-items-around row-1">
-                    <h2>What is your mode</h2>
-                    <textarea id="What-is-your-mode?"></textarea>
-            </div>
-           <!-- <input type="range" id="volume" name="volume"
+    <main class="">
+        <div id="intro-content" class="container align-items-start">
+            <div class="row align-items-around">
+                <div class="row-1">
+                    <h2>Where are you?</h2>
+                    <div class="row">
+                        <div>
+                            <select name="state" id="states">
+                            </select>
+                            <button type="button" id="submit-city">Submit</button>
+                        </div>
+                    </div>
+                    <div class="container align-items-start">
+                        <div class="row align-items-around row-1">
+                            <h2>What is your mode</h2>
+                            <textarea id="What-is-your-mode?"></textarea>
+                        </div>
+                        <!-- <input type="range" id="volume" name="volume"
             min="0" max="10">
             <label for="volume">Head space</label>
         </div>
@@ -45,15 +47,17 @@
         <div class="range-wrap">
             <input type="range" class="range" min="-10" max="140">
             <output class="bubble">Appetite</output> -->
-            <button id="btn" class="Calculate">Calculate</button>
-        </div>
-        </div>
-    <!--col for choices made-->
-        <div class="row history">
-            <ul></ul>
-        </div>
-        </div>
-        </main>
-        <script src="./assets/js/script.js"></script>
-    </body>
+                        <button id="btn" class="Calculate">Calculate</button>
+                    </div>
+                </div>
+                <!--col for choices made-->
+                <div class="row history">
+                    <ul></ul>
+                </div>
+            </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+
 </html>
