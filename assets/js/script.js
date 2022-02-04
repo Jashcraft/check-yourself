@@ -8,7 +8,7 @@ var todayDate = moment().format("L");
 
 //Data values for user info like state of residence and card info
 var userState = stateSelectEl.value;
-var userMood = 5;
+var userMood;
 
 var userMoodCards;
 if (JSON.parse(localStorage.getItem("moodCards")) === null) {
@@ -18,7 +18,6 @@ if (JSON.parse(localStorage.getItem("moodCards")) === null) {
 else {
     userMoodCards = JSON.parse(localStorage.getItem("moodCards"));
 }
-
 
 var states = [
     {
@@ -416,9 +415,11 @@ var loadMoodForm = function() {
     mainPageEl.querySelector("#moodForm").addEventListener("submit", function(event) {
         event.preventDefault();
         userMoodText = moodTextArea.value;
+        userMood = moodRating.value;
         generateCard(userMoodText, userMood);
     });
-    // generateCard(userMoodText, userMood);
+
+    // Clear the values for userMoodText and userMood
 
 };
 
