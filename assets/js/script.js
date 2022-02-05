@@ -3,7 +3,7 @@ var submitBtnEl = document.querySelector('#submit-city');
 var globalState  = stateSelectEl.value; //rename this
 
 //More element variables for global access
-var mainPageEl = document.querySelector("main");
+var mainPageEl = document.querySelector("#intro-container");
 
 var todayDate = moment().format("L");
 
@@ -93,7 +93,7 @@ submitBtnEl.addEventListener('click', function (event) {
                 
                 var carouselImg = document.createElement("img");
                 carouselImg.src = perfImg;
-                carouselImg.classList = "scale-150 rounded-lg transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl";
+                carouselImg.classList = "rounded-lg transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl";
 
                 var carouselText = document.createElement("div");
                 carouselText.classList = "md:block absolute inset-x-1/4 text-center";
