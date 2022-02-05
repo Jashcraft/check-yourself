@@ -303,7 +303,6 @@ var cityButtonEl = document.querySelector("#submit-city");
 cityButtonEl.addEventListener("click", logCity);
 
 //Listener for the "see suggestions" buttons within each card
-
 // introSection.addEventListener("click", function(event) {   
 //     console.log(event);
 //     if (event.target === document.querySelector(".suggestionButton")) {
@@ -311,5 +310,3 @@ cityButtonEl.addEventListener("click", logCity);
 //         console.log("Loading suggestions to sidebar...");
 //     };
 // });
-
-
