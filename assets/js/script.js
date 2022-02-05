@@ -1,9 +1,11 @@
 var stateSelectEl = document.querySelector('#states');
 var submitBtnEl = document.querySelector('#submit-city');
 var globalState  = stateSelectEl.value; //rename this
+var cardsSection = document.querySelector("#left-card-container");
+var sidebarContainer = document.querySelector("#right-suggestions-container");
 
 //More element variables for global access
-var mainPageEl = document.querySelector("#intro-container");
+var introContainer = document.querySelector("#intro-container");
 
 var todayDate = moment().format("L");
 
@@ -190,6 +192,12 @@ var generateCard = function(moodText, moodScore) {
     cardContainer.appendChild(cardScore);
     cardContainer.appendChild(suggestionButton);
 
+    //Add event listener
+    suggestionButton.addEventListener("click", function() {
+        console.log("clicked a suggestion button");
+        console.log(briefDescription);
+    });
+
     //Append the card container to the cardsDiv element
     var cardsDiv = document.querySelector("#cardsDiv");
     cardsDiv.appendChild(cardContainer);
@@ -200,13 +208,13 @@ var loadMoodForm = function() {
 
     //Create the new page structure...
     //Remove old elements from the page
-    mainPageEl.removeChild(document.querySelector("#intro-content"));
+    introContainer.removeChild(document.querySelector("#intro-content"));
 
     //Add h2 "How are you feeling today?"
     var moodTitle = document.createElement("h2");
     moodTitle.textContent = "How are you feeling today?";
     moodTitle.setAttribute("class", ""); //Add necessary styling here
-    mainPageEl.appendChild(moodTitle);
+    introContainer.appendChild(moodTitle);
 
     //Add the form to hold the textarea, dropdown, and submit
     var moodForm = document.createElement("form");
@@ -258,19 +266,19 @@ var loadMoodForm = function() {
     moodForm.appendChild(moodSubmitButton);
 
     //Append form to page
-    mainPageEl.appendChild(moodForm);
+    introContainer.appendChild(moodForm);
     //Also append empty divs for ease of styling when cards and sidebar are appended to it
     var cardsDiv = document.createElement("div");
     cardsDiv.setAttribute("id", "cardsDiv");
     var sidebarDiv = document.createElement("div");
     sidebarDiv.setAttribute("id", "sidebarDiv");
 
-    mainPageEl.appendChild(cardsDiv);
-    mainPageEl.appendChild(sidebarDiv);
+    cardsSection.appendChild(cardsDiv);
+    sidebarContainer.appendChild(sidebarDiv);
 
     //Call the generateCard function with parameters for state, moodText, and moodScore
     //This should eventually be wired to a submit event listener, but for testing will be called.
-    mainPageEl.querySelector("#moodForm").addEventListener("submit", function(event) {
+    introContainer.querySelector("#moodForm").addEventListener("submit", function(event) {
         event.preventDefault();
         userMoodText = moodTextArea.value;
         userMood = moodRating.value;
@@ -297,9 +305,10 @@ var cityButtonEl = document.querySelector("#submit-city");
 cityButtonEl.addEventListener("click", logCity);
 
 //Listener for the "see suggestions" buttons within each card
-mainPageEl.addEventListener("click", function(event) {   
-    if (event.target === document.querySelector(".suggestionButton")) {
-        //function call here
-        console.log("Loading suggestions to sidebar...");
-    };
-});
+// introContainer.addEventListener("click", function(event) {   
+//     console.log(event);
+//     if (event.target === document.querySelector(".suggestionButton")) {
+//         //function call here
+//         console.log("Loading suggestions to sidebar...");
+//     };
+// });
