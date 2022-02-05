@@ -416,11 +416,13 @@ var loadMoodForm = function() {
         event.preventDefault();
         userMoodText = moodTextArea.value;
         userMood = moodRating.value;
+
+        // Clear the values for userMoodText and userMood
+        moodTextArea.value = "";
+        moodRating.value = ""
+        
         generateCard(userMoodText, userMood);
     });
-
-    // Clear the values for userMoodText and userMood
-
 };
 
 var logCity = function() {
