@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Check Yourself</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="">
+    <link href="./assets/css/style.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+</head>
+
+<body>
+    <header class="hero bg-yellow-900 rounded-md">
+        <div class="text-center text-white">
+            <h1 class="app-title"><i class="fab checkmark"></i> check Yourself</h1>
+        </div>
+    </header>
+    <!-- find your location-->
+    <main>
+        <section class="bg-lime-900 rounded-md" id="intro-container">
+            <div id="intro-content" class="container align-items-start">
+                <div class="row align-items-around">
+                    <div class="row-1">
+                        <h2>Where are you?</h2>
+                        <div class="row">
+                            <div>
+                                <select name="state" id="states">
+                                </select>
+                                <button type="button" id="submit-city">Submit</button>
+                            </div>
+                        </div>
+
+                        <div class="container align-items-start">
+                            <div class="row align-items-around row-1">
+                                <h2>What is your mood</h2>
+                                <textarea id="What-is-your-mood?"></textarea>
+                            </div>
+
+                            <!-- <input type="range" id="volume" name="volume"
+            min="0" max="10">
+            <label for="volume">Head space</label>
+        </div>
+    <div class="row">
+        <div class="range-wrap">
+            <input type="range" class="range">
+            <output class="bubble">Energy</output>
+        </div>
+        <div class="range-wrap">
+            <input type="range" class="range" min="-10" max="140">
+            <output class="bubble">Appetite</output> -->
+                            <button id="btn" class="Calculate">Calculate</button>
+                        </div>
+                    </div>
+                    <!--col for choices made-->
+                    <div class="row history">
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="lower-container" class="border-double border-black border-8">
+            <div id="left-card-container" class="">
+                <p>test Div Left</p>
+            </div>
+            <div id="right-suggestions-container"> 
+                <p> Test Div Right </p>
+                <section>
+                    <div id="suggestions-container" class="w-3/12">
+                        <div id="eventCarousel" class="carousel slide relative" data-bs-ride="carousel">
+                            <div class="carousel-inner relative w-full ">
+
+                            </div>
+                            <button
+                                class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+                                type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon inline-block bg-no-repeat"
+                                    aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button
+                                class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-8"
+                                type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon inline-block bg-no-repeat"
+                                    aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="./assets/js/states.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+</body>
+
+</html>
