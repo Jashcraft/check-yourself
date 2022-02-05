@@ -1,4 +1,3 @@
-
 var stateSelectEl = document.querySelector('#states');
 var submitBtnEl = document.querySelector('#submit-city');
 var globalState  = stateSelectEl.value; //rename this
@@ -6,11 +5,11 @@ var globalState  = stateSelectEl.value; //rename this
 //More element variables for global access
 var mainPageEl = document.querySelector("main");
 
+var todayDate = moment().format("L");
+
 //Data values for user info like state of residence and card info
-var userState = "";
-var userMood = 5;
-var userMoodText = "When I was, a young lad, my father... took me into the city.  To see a marching band.  He said son when... you grow up.  Something something blah blah blah black paraaaaaaaaaade!";
-var date = "02/02/2022";
+var userState = stateSelectEl.value;
+var userMood;
 
 var userMoodCards;
 if (JSON.parse(localStorage.getItem("moodCards")) === null) {
@@ -21,9 +20,6 @@ else {
     userMoodCards = JSON.parse(localStorage.getItem("moodCards"));
 }
 
-
-
-
 for (var i = 0; i < states.length; i++) {
     var optionEl = document.createElement("option")
     optionEl.value = states[i].abbreviation;
@@ -32,6 +28,38 @@ for (var i = 0; i < states.length; i++) {
     stateSelectEl.appendChild(optionEl);
 };
 
+submitBtnEl.addEventListener('click', function (event) {
+    // console.log("helloooo... Infini-dagger!!");
+    event.preventDefault;
+    var stateVal = stateSelectEl.value;
+    userState = stateVal;
+
+    fetch("https://api.seatgeek.com/2/events/?venue.state=" + stateVal + "&client_id=MjU1NTAzMTF8MTY0MzU5OTc0MS41NjYxMzg1&client_secret=b63b8c19928eaec5bc232406dd1a3f9b736e95c54062f429dee6e000c044de9a&per_page=5")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+        })
+        .catch(err => {
+            console.error(err);
+        });
+
+        fetch("http://www.boredapi.com/api/activity?type=cooking")
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(data){
+            console.log(data);
+        });
+
+for (var i = 0; i < states.length; i++) {
+    var optionEl = document.createElement("option")
+    optionEl.value = states[i].abbreviation;
+    optionEl.textContent = states[i].name;
+
+    stateSelectEl.appendChild(optionEl);
+};
 
 submitBtnEl.addEventListener('click', function (event) {
     // console.log("helloooo... Infini-dagger!!");
@@ -124,7 +152,7 @@ submitBtnEl.addEventListener('click', function (event) {
 
 //Handler for the cityButton on the intro screen
 
-var generateCard = function (moodText, moodScore) {
+var generateCard = function(moodText, moodScore) {
     //Generate the elements for the main div, the header, description, score, and button
     //div container
     var cardContainer = document.createElement("div");
@@ -132,22 +160,23 @@ var generateCard = function (moodText, moodScore) {
 
     //card header
     var cardHeader = document.createElement("h3");
-    cardHeader.textContent = "Entry from " + date;
+    cardHeader.textContent = "Entry from "+todayDate;
 
     //card brief description
     var briefDescription = moodText.split("");
     //Only display the first 50 characters of the user's description for a given day
-    console.log("Brief description (full):", briefDescription);
-    if (briefDescription.length > 50) {
-        briefDescription = briefDescription.splice(0, 50).join("") + "...";
-        console.log("Brief Description (Shortened): ", briefDescription);
+    if (briefDescription.length > 150) {
+        briefDescription = briefDescription.splice(0, 150).join("")+"...";
+    }
+    else {
+        briefDescription = briefDescription.join("");
     }
     var cardDescription = document.createElement("p");
     cardDescription.textContent = briefDescription;
 
     //card score
     var cardScore = document.createElement("h3");
-    cardScore.textContent = "Mood Score: " + moodScore;
+    cardScore.textContent = "Mood Score: "+moodScore;
 
     //card button "See Suggestions"
     var suggestionButton = document.createElement("button");
@@ -166,11 +195,11 @@ var generateCard = function (moodText, moodScore) {
 
 }
 
-var loadMoodForm = function () {
+var loadMoodForm = function() {
 
     //Create the new page structure...
     //Remove old elements from the page
-    mainPageEl.removeChild(document.querySelector(".container"));
+    mainPageEl.removeChild(document.querySelector("#intro-content"));
 
     //Add h2 "How are you feeling today?"
     var moodTitle = document.createElement("h2");
@@ -185,7 +214,7 @@ var loadMoodForm = function () {
     //Add textarea "Describe your mood"
     var moodTextLabel = document.createElement("label");
     moodTextLabel.setAttribute("for", "moodTextArea");
-    moodTextLabel.setAttribute("id", "moodTextLabel");
+    moodTextLabel.setAttribute("id", "moodTextLabel"); 
     moodTextLabel.setAttribute("class", ""); //Set classes for the label
     moodTextLabel.textContent = "Describe your mood";
 
@@ -208,8 +237,8 @@ var loadMoodForm = function () {
     //Append options to select
     for (var i = 0; i < 5; i++) {
         var option = document.createElement("option");
-        option.setAttribute("value", i + 1);
-        option.textContent = i + 1;
+        option.setAttribute("value", i+1);
+        option.textContent = i+1;
         //Set styling with classes
         moodRating.appendChild(option);
     }
@@ -240,15 +269,20 @@ var loadMoodForm = function () {
 
     //Call the generateCard function with parameters for state, moodText, and moodScore
     //This should eventually be wired to a submit event listener, but for testing will be called.
-    mainPageEl.querySelector("#moodForm").addEventListener("submit", function (event) {
+    mainPageEl.querySelector("#moodForm").addEventListener("submit", function(event) {
         event.preventDefault();
+        userMoodText = moodTextArea.value;
+        userMood = moodRating.value;
+
+        // Clear the values for userMoodText and userMood
+        moodTextArea.value = "";
+        moodRating.value = ""
+        
         generateCard(userMoodText, userMood);
     });
-    // generateCard(userMoodText, userMood);
-
 };
 
-var logCity = function () {
+var logCity = function() {
 
     //Log the city input to a variable so it can be accessed on future logins
     //This should eventually pull the value from the intro screen's form.
@@ -258,15 +292,13 @@ var logCity = function () {
 }
 
 //listener for the city button
-// var cityButtonEl = document.querySelector(".cityButton");
-// cityButtonEl.addEventListener("click", logCity);
+var cityButtonEl = document.querySelector("#submit-city");
+cityButtonEl.addEventListener("click", logCity);
 
 //Listener for the "see suggestions" buttons within each card
-mainPageEl.addEventListener("click", function (event) {
+mainPageEl.addEventListener("click", function(event) {   
     if (event.target === document.querySelector(".suggestionButton")) {
         //function call here
         console.log("Loading suggestions to sidebar...");
     };
 });
-
-
