@@ -32,6 +32,7 @@ for (var i = 0; i < states.length; i++) {
     stateSelectEl.appendChild(optionEl);
 };
 
+
 submitBtnEl.addEventListener('click', function (event) {
     // console.log("helloooo... Infini-dagger!!");
     event.preventDefault;
