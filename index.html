@@ -12,18 +12,17 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
-    <link href="./assets/css/style.css" rel="stylesheet" />
 </head>
 
 <body>
-    <header class="hero">
+    <header class="hero bg-yellow-900 rounded-md">
         <div class="text-center text-white">
             <h1 class="app-title"><i class="fab checkmark"></i> check Yourself</h1>
         </div>
     </header>
     <!-- find your location-->
     <main>
-        <section class="" id="intro-container">
+        <section class="bg-lime-900 rounded-md" id="intro-container">
             <div id="intro-content" class="container align-items-start">
                 <div class="row align-items-around">
                     <div class="row-1">
@@ -64,30 +63,38 @@
                 </div>
             </div>
         </section>
+        <section id="lower-container" class="">
+            <div id="left-card-container">
+                <p>test Div Left</p>
+            </div>
+            <div id="right-suggestions-container"> 
+                <p> Test Div Right </p>
+                <section>
+                    <div id="suggestions-container" class="w-3/12">
+                        <div id="eventCarousel" class="carousel slide relative" data-bs-ride="carousel">
+                            <div class="carousel-inner relative w-full ">
 
-            <section>
-                <div id="suggestions-container" class="w-3/12">
-                    <div id="eventCarousel" class="carousel slide relative" data-bs-ride="carousel">
-                        <div class="carousel-inner relative w-full ">
-
+                            </div>
+                            <button
+                                class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+                                type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon inline-block bg-no-repeat"
+                                    aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button
+                                class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-8"
+                                type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon inline-block bg-no-repeat"
+                                    aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
-                        <button
-                            class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
-                            type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon inline-block bg-no-repeat"
-                                aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button
-                            class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-8"
-                            type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon inline-block bg-no-repeat"
-                                aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
+        </section>
+
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
