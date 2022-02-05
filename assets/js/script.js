@@ -28,6 +28,9 @@ for (var i = 0; i < states.length; i++) {
     optionEl.value = states[i].abbreviation;
     optionEl.textContent = states[i].name;
 
+    stateSelectEl.appendChild(optionEl);
+};
+
 submitBtnEl.addEventListener('click', function (event) {
     // console.log("helloooo... Infini-dagger!!");
     event.preventDefault;
@@ -280,50 +283,6 @@ var generateCard = function(moodText, moodScore) {
             console.log(data);
         });
 
-});
-
-//Handler for the cityButton on the intro screen
-
-var generateCard = function(moodText, moodScore) {
-    //Generate the elements for the main div, the header, description, score, and button
-    var cardContainer = document.createElement("div");
-    cardContainer.setAttribute("class", "card");
-
-    //card header
-    var cardHeader = document.createElement("h3");
-    cardHeader.textContent = "Entry from "+todayDate;
-
-    //card brief description
-    var briefDescription = moodText.split("");
-    //Only display the first 50 characters of the user's description for a given day
-    if (briefDescription.length > 150) {
-        briefDescription = briefDescription.splice(0, 150).join("")+"...";
-    }
-    else {
-        briefDescription = briefDescription.join("");
-    }
-    var cardDescription = document.createElement("p");
-    cardDescription.textContent = briefDescription;
-
-    //card score
-    var cardScore = document.createElement("h3");
-    cardScore.textContent = "Mood Score: "+moodScore;
-
-    //card button "See Suggestions"
-    var suggestionButton = document.createElement("button");
-    suggestionButton.setAttribute("class", "suggestionButton");
-    suggestionButton.textContent = "See Suggestions";
-
-    //Append items to the card container
-    cardContainer.appendChild(cardHeader);
-    cardContainer.appendChild(cardDescription);
-    cardContainer.appendChild(cardScore);
-    cardContainer.appendChild(suggestionButton);
-
-    //Add event listener
-    suggestionButton.addEventListener("click", function() {
-        console.log("clicked a suggestion button");
-        console.log(briefDescription);
     });
 
     //Append the card container to the cardsDiv element
