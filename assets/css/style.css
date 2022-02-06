@@ -1,3 +1,8 @@
 body {
     background-color:blanchedalmond;
-}
+    text-align:center;
+    flex-wrap: wrap;
+    text-shadow: gold;
+
+};
+
