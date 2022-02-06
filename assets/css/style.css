@@ -2,7 +2,7 @@ body {
     background-color:blanchedalmond;
     text-align:center;
     flex-wrap: wrap;
-    text-shadow: gold;
-
+    text-shadow: solid  gold;
+    border-color: solid goldenrod
 };
 
