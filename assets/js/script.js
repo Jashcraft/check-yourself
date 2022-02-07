@@ -1,14 +1,18 @@
-var stateSelectEl = document.querySelector('#state');
-var submitBtnEl = document.querySelector('#submit');
+var stateSelectEl = document.querySelector('#states');
+var submitBtnEl = document.querySelector('#submit-city');
+var globalState  = stateSelectEl.value; //rename this
+var cardsSection = document.querySelector("#left-card-container");
+var sidebarContainer = document.querySelector("#right-suggestions-container");
+var suggestionButtonEl = document.querySelector(".suggestionButton");
 
 //More element variables for global access
-var mainPageEl = document.querySelector("main");
+var introContainer = document.querySelector("#intro-container");
+
+var todayDate = moment().format("L");
 
 //Data values for user info like state of residence and card info
-var userState = "";
-var userMood = 5;
-var userMoodText = "When I was, a young lad, my father... took me into the city.  To see a marching band.  He said son when... you grow up.  Something something blah blah blah black paraaaaaaaaaade!";
-var date = "02/02/2022";
+var userState = stateSelectEl.value;
+var userMood;
 
 var userMoodCards;
 if (JSON.parse(localStorage.getItem("moodCards")) === null) {
@@ -18,246 +22,6 @@ if (JSON.parse(localStorage.getItem("moodCards")) === null) {
 else {
     userMoodCards = JSON.parse(localStorage.getItem("moodCards"));
 }
-
-
-var states = [
-    {
-        "name": "Alabama",
-        "abbreviation": "AL"
-    },
-    {
-        "name": "Alaska",
-        "abbreviation": "AK"
-    },
-    {
-        "name": "American Samoa",
-        "abbreviation": "AS"
-    },
-    {
-        "name": "Arizona",
-        "abbreviation": "AZ"
-    },
-    {
-        "name": "Arkansas",
-        "abbreviation": "AR"
-    },
-    {
-        "name": "California",
-        "abbreviation": "CA"
-    },
-    {
-        "name": "Colorado",
-        "abbreviation": "CO"
-    },
-    {
-        "name": "Connecticut",
-        "abbreviation": "CT"
-    },
-    {
-        "name": "Delaware",
-        "abbreviation": "DE"
-    },
-    {
-        "name": "District Of Columbia",
-        "abbreviation": "DC"
-    },
-    {
-        "name": "Federated States Of Micronesia",
-        "abbreviation": "FM"
-    },
-    {
-        "name": "Florida",
-        "abbreviation": "FL"
-    },
-    {
-        "name": "Georgia",
-        "abbreviation": "GA"
-    },
-    {
-        "name": "Guam",
-        "abbreviation": "GU"
-    },
-    {
-        "name": "Hawaii",
-        "abbreviation": "HI"
-    },
-    {
-        "name": "Idaho",
-        "abbreviation": "ID"
-    },
-    {
-        "name": "Illinois",
-        "abbreviation": "IL"
-    },
-    {
-        "name": "Indiana",
-        "abbreviation": "IN"
-    },
-    {
-        "name": "Iowa",
-        "abbreviation": "IA"
-    },
-    {
-        "name": "Kansas",
-        "abbreviation": "KS"
-    },
-    {
-        "name": "Kentucky",
-        "abbreviation": "KY"
-    },
-    {
-        "name": "Louisiana",
-        "abbreviation": "LA"
-    },
-    {
-        "name": "Maine",
-        "abbreviation": "ME"
-    },
-    {
-        "name": "Marshall Islands",
-        "abbreviation": "MH"
-    },
-    {
-        "name": "Maryland",
-        "abbreviation": "MD"
-    },
-    {
-        "name": "Massachusetts",
-        "abbreviation": "MA"
-    },
-    {
-        "name": "Michigan",
-        "abbreviation": "MI"
-    },
-    {
-        "name": "Minnesota",
-        "abbreviation": "MN"
-    },
-    {
-        "name": "Mississippi",
-        "abbreviation": "MS"
-    },
-    {
-        "name": "Missouri",
-        "abbreviation": "MO"
-    },
-    {
-        "name": "Montana",
-        "abbreviation": "MT"
-    },
-    {
-        "name": "Nebraska",
-        "abbreviation": "NE"
-    },
-    {
-        "name": "Nevada",
-        "abbreviation": "NV"
-    },
-    {
-        "name": "New Hampshire",
-        "abbreviation": "NH"
-    },
-    {
-        "name": "New Jersey",
-        "abbreviation": "NJ"
-    },
-    {
-        "name": "New Mexico",
-        "abbreviation": "NM"
-    },
-    {
-        "name": "New York",
-        "abbreviation": "NY"
-    },
-    {
-        "name": "North Carolina",
-        "abbreviation": "NC"
-    },
-    {
-        "name": "North Dakota",
-        "abbreviation": "ND"
-    },
-    {
-        "name": "Northern Mariana Islands",
-        "abbreviation": "MP"
-    },
-    {
-        "name": "Ohio",
-        "abbreviation": "OH"
-    },
-    {
-        "name": "Oklahoma",
-        "abbreviation": "OK"
-    },
-    {
-        "name": "Oregon",
-        "abbreviation": "OR"
-    },
-    {
-        "name": "Palau",
-        "abbreviation": "PW"
-    },
-    {
-        "name": "Pennsylvania",
-        "abbreviation": "PA"
-    },
-    {
-        "name": "Puerto Rico",
-        "abbreviation": "PR"
-    },
-    {
-        "name": "Rhode Island",
-        "abbreviation": "RI"
-    },
-    {
-        "name": "South Carolina",
-        "abbreviation": "SC"
-    },
-    {
-        "name": "South Dakota",
-        "abbreviation": "SD"
-    },
-    {
-        "name": "Tennessee",
-        "abbreviation": "TN"
-    },
-    {
-        "name": "Texas",
-        "abbreviation": "TX"
-    },
-    {
-        "name": "Utah",
-        "abbreviation": "UT"
-    },
-    {
-        "name": "Vermont",
-        "abbreviation": "VT"
-    },
-    {
-        "name": "Virgin Islands",
-        "abbreviation": "VI"
-    },
-    {
-        "name": "Virginia",
-        "abbreviation": "VA"
-    },
-    {
-        "name": "Washington",
-        "abbreviation": "WA"
-    },
-    {
-        "name": "West Virginia",
-        "abbreviation": "WV"
-    },
-    {
-        "name": "Wisconsin",
-        "abbreviation": "WI"
-    },
-    {
-        "name": "Wyoming",
-        "abbreviation": "WY"
-    }
-]
 
 for (var i = 0; i < states.length; i++) {
     var optionEl = document.createElement("option")
@@ -271,6 +35,7 @@ submitBtnEl.addEventListener('click', function (event) {
     // console.log("helloooo... Infini-dagger!!");
     event.preventDefault;
     var stateVal = stateSelectEl.value;
+    userState = stateVal;
 
     fetch("https://api.seatgeek.com/2/events/?venue.state=" + stateVal + "&client_id=MjU1NTAzMTF8MTY0MzU5OTc0MS41NjYxMzg1&client_secret=b63b8c19928eaec5bc232406dd1a3f9b736e95c54062f429dee6e000c044de9a&per_page=5")
         .then(function (response) {
@@ -290,8 +55,104 @@ submitBtnEl.addEventListener('click', function (event) {
         .then(function(data){
             console.log(data);
         });
-
 });
+
+for (var i = 0; i < states.length; i++) {
+    var optionEl = document.createElement("option")
+    optionEl.value = states[i].abbreviation;
+    optionEl.textContent = states[i].name;
+
+    stateSelectEl.appendChild(optionEl);
+};
+
+// suggestionButtonEl.addEventListener('click', function (event) {
+//     // console.log("helloooo... Infini-dagger!!");
+//     event.preventDefault;
+//     $(".carousel-inner").empty();
+//     var stateVal = stateSelectEl.value;
+
+//     fetch("https://api.seatgeek.com/2/events/?venue.state=" + stateVal + "&client_id=MjU1NTAzMTF8MTY0MzU5OTc0MS41NjYxMzg1&client_secret=b63b8c19928eaec5bc232406dd1a3f9b736e95c54062f429dee6e000c044de9a&per_page=5")
+//         .then(function (response) {
+//             return response.json();
+//         })
+//         .then(function (data) {
+//             console.log(data);
+//             for (var i = 0; i < data.events.length; i++){
+//                 var eventTitle = data.events[i].title;
+//                 var eventTime = moment(data.events[i].datetime_local).format("dddd, MMMM Do YYYY, h:mm:ss a");
+//                 var venName = data.events[i].venue.name;
+//                 var venAddr = data.events[i].venue.address;
+//                 var venExtAddr = data.events[i].venue.extended_address;
+//                 var venUrl = data.events[i].venue.url;
+//                 var perfImg = data.events[i].performers[0].image;
+            
+            
+//                 var carouselItem = document.createElement("div");
+//                 if (i === 0){
+//                     carouselItem.classList = "carousel-item active relative float-left w-full";
+//                 } else {
+//                     carouselItem.classList = "carousel-item relative float-left w-full";
+//                 }
+                
+//                 var carouselImg = document.createElement("img");
+//                 carouselImg.src = perfImg;
+//                 carouselImg.classList = "rounded-lg transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl";
+
+//                 var carouselText = document.createElement("div");
+//                 carouselText.classList = "md:block absolute inset-x-1/4 text-center";
+
+//                 var carouselEventTitle = document.createElement("h2");
+//                 carouselEventTitle.className = "mt-12";
+//                 carouselEventTitle.textContent = eventTitle;
+
+//                 var carouselEventDate = document.createElement("h3");
+//                 carouselEventDate.textContent = eventTime;
+
+//                 var carouselVenueName = document.createElement("h4");
+//                 carouselVenueName.textContent = venName;
+
+//                 var carouselStreet = document.createElement("p");
+//                 carouselStreet.textContent = venAddr
+
+//                 var carouselCity = document.createElement("p");
+//                 carouselCity.textContent = venExtAddr;
+
+//                 var carouselUrl = document.createElement("a");
+//                 carouselUrl.href = venUrl;
+
+//                 var carouselTicketButton = document.createElement("button");
+//                 carouselTicketButton.type = "button";
+//                 carouselTicketButton.classList = "inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out"
+//                 carouselTicketButton.textContent = "Tickets";
+
+//                 carouselUrl.appendChild(carouselTicketButton);
+//                 carouselText.appendChild(carouselEventTitle);
+//                 carouselText.appendChild(carouselEventDate);
+//                 carouselText.appendChild(carouselVenueName);
+//                 carouselText.appendChild(carouselStreet);
+//                 carouselText.appendChild(carouselCity);
+//                 carouselText.appendChild(carouselUrl);
+
+//                 carouselItem.appendChild(carouselImg);
+//                 carouselItem.appendChild(carouselText);
+
+//                 $(".carousel-inner").append(carouselItem);
+//             };
+//         })
+
+//         .catch(err => {
+//             console.error(err);
+//         });
+
+//         fetch("http://www.boredapi.com/api/activity?type=relaxation")
+//         .then(function(response){
+//             return response.json();
+//         })
+//         .then(function(data){
+//             console.log(data);
+//         });
+
+// });
 
 // Handler for the cityButton on the intro screen
 
@@ -303,15 +164,16 @@ function generateCard(moodText, moodScore) {
 
     //card header
     var cardHeader = document.createElement("h3");
-    cardHeader.textContent = "Entry from " + date;
+    cardHeader.textContent = "Entry from "+todayDate;
 
     //card brief description
     var briefDescription = moodText.split("");
     //Only display the first 50 characters of the user's description for a given day
-    console.log("Brief description (full):", briefDescription);
-    if (briefDescription.length > 50) {
-        briefDescription = briefDescription.splice(0, 50).join("") + "...";
-        console.log("Brief Description (Shortened): ", briefDescription);
+    if (briefDescription.length > 150) {
+        briefDescription = briefDescription.splice(0, 150).join("")+"...";
+    }
+    else {
+        briefDescription = briefDescription.join("");
     }
     var cardDescription = document.createElement("p");
     cardDescription.textContent = briefDescription;
@@ -331,6 +193,98 @@ function generateCard(moodText, moodScore) {
     cardContainer.appendChild(cardScore);
     cardContainer.appendChild(suggestionButton);
 
+    //Add event listener
+    suggestionButton.addEventListener("click", function(data) {
+        console.log("clicked a suggestion button");
+        console.log(briefDescription);
+        // clears out existing crousel that may already be displayed 
+        $(".carousel-inner").empty();
+    var stateVal = stateSelectEl.value;
+
+    //
+    fetch("https://api.seatgeek.com/2/events/?venue.state=" + stateVal + "&client_id=MjU1NTAzMTF8MTY0MzU5OTc0MS41NjYxMzg1&client_secret=b63b8c19928eaec5bc232406dd1a3f9b736e95c54062f429dee6e000c044de9a&per_page=5")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            for (var i = 0; i < data.events.length; i++){
+                var eventTitle = data.events[i].title;
+                var eventTime = moment(data.events[i].datetime_local).format("dddd, MMMM Do YYYY, h:mm:ss a");
+                var venName = data.events[i].venue.name;
+                var venAddr = data.events[i].venue.address;
+                var venExtAddr = data.events[i].venue.extended_address;
+                var venUrl = data.events[i].venue.url;
+                var perfImg = data.events[i].performers[0].image;
+            
+            
+                var carouselItem = document.createElement("div");
+                if (i === 0){
+                    carouselItem.classList = "carousel-item active relative float-left w-full";
+                } else {
+                    carouselItem.classList = "carousel-item relative float-left w-full";
+                }
+                
+                var carouselImg = document.createElement("img");
+                carouselImg.src = perfImg;
+                carouselImg.classList = "rounded-lg transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl";
+
+                var carouselText = document.createElement("div");
+                carouselText.classList = "md:block absolute inset-x-1/4 text-center";
+
+                var carouselEventTitle = document.createElement("h2");
+                carouselEventTitle.className = "mt-12";
+                carouselEventTitle.textContent = eventTitle;
+
+                var carouselEventDate = document.createElement("h3");
+                carouselEventDate.textContent = eventTime;
+
+                var carouselVenueName = document.createElement("h4");
+                carouselVenueName.textContent = venName;
+
+                var carouselStreet = document.createElement("p");
+                carouselStreet.textContent = venAddr
+
+                var carouselCity = document.createElement("p");
+                carouselCity.textContent = venExtAddr;
+
+                var carouselUrl = document.createElement("a");
+                carouselUrl.href = venUrl;
+
+                var carouselTicketButton = document.createElement("button");
+                carouselTicketButton.type = "button";
+                carouselTicketButton.classList = "inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out"
+                carouselTicketButton.textContent = "Tickets";
+
+                carouselUrl.appendChild(carouselTicketButton);
+                carouselText.appendChild(carouselEventTitle);
+                carouselText.appendChild(carouselEventDate);
+                carouselText.appendChild(carouselVenueName);
+                carouselText.appendChild(carouselStreet);
+                carouselText.appendChild(carouselCity);
+                carouselText.appendChild(carouselUrl);
+
+                carouselItem.appendChild(carouselImg);
+                carouselItem.appendChild(carouselText);
+
+                $(".carousel-inner").append(carouselItem);
+            };
+        })
+
+        .catch(err => {
+            console.error(err);
+        });
+
+        fetch("http://www.boredapi.com/api/activity?type=relaxation")
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(data){
+            console.log(data);
+        });
+
+    });
+
     //Append the card container to the cardsDiv element
     var cardsDiv = document.querySelector("#cardsDiv");
     cardsDiv.appendChild(cardContainer);
@@ -341,13 +295,13 @@ var loadMoodForm = function() {
 
     //Create the new page structure...
     //Remove old elements from the page
-    mainPageEl.removeChild(document.querySelector(".container"));
+    introContainer.removeChild(document.querySelector("#intro-content"));
 
     //Add h2 "How are you feeling today?"
     var moodTitle = document.createElement("h2");
     moodTitle.textContent = "How are you feeling today?";
     moodTitle.setAttribute("class", ""); //Add necessary styling here
-    mainPageEl.appendChild(moodTitle);
+    introContainer.appendChild(moodTitle);
 
     //Add the form to hold the textarea, dropdown, and submit
     var moodForm = document.createElement("form");
@@ -399,24 +353,29 @@ var loadMoodForm = function() {
     moodForm.appendChild(moodSubmitButton);
 
     //Append form to page
-    mainPageEl.appendChild(moodForm);
+    introContainer.appendChild(moodForm);
     //Also append empty divs for ease of styling when cards and sidebar are appended to it
     var cardsDiv = document.createElement("div");
     cardsDiv.setAttribute("id", "cardsDiv");
     var sidebarDiv = document.createElement("div");
     sidebarDiv.setAttribute("id", "sidebarDiv");
 
-    mainPageEl.appendChild(cardsDiv);
-    mainPageEl.appendChild(sidebarDiv);
+    cardsSection.appendChild(cardsDiv);
+    sidebarContainer.appendChild(sidebarDiv);
 
     //Call the generateCard function with parameters for state, moodText, and moodScore
     //This should eventually be wired to a submit event listener, but for testing will be called.
-    mainPageEl.querySelector("#moodForm").addEventListener("submit", function(event) {
+    introContainer.querySelector("#moodForm").addEventListener("submit", function(event) {
         event.preventDefault();
+        userMoodText = moodTextArea.value;
+        userMood = moodRating.value;
+
+        // Clear the values for userMoodText and userMood
+        moodTextArea.value = "";
+        moodRating.value = ""
+        
         generateCard(userMoodText, userMood);
     });
-    // generateCard(userMoodText, userMood);
-
 };
 
 var logCity = function() {
@@ -429,13 +388,14 @@ var logCity = function() {
 }
 
 //listener for the city button
-var cityButtonEl = document.querySelector(".cityButton");
+var cityButtonEl = document.querySelector("#submit-city");
 cityButtonEl.addEventListener("click", logCity);
 
 //Listener for the "see suggestions" buttons within each card
-mainPageEl.addEventListener("click", function(event) {   
-    if (event.target === document.querySelector(".suggestionButton")) {
-        //function call here
-        console.log("Loading suggestions to sidebar...");
-    };
-});
+// introContainer.addEventListener("click", function(event) {   
+//     console.log(event);
+//     if (event.target === document.querySelector(".suggestionButton")) {
+//         //function call here
+//         console.log("Loading suggestions to sidebar...");
+//     };
+// });
