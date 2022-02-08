@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="">
-    <link rel="stylesheet" href="./assets/css/style.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet"
@@ -37,36 +37,36 @@
 
                         <div class="container align-items-center">
                             <div class="row align-items-around row-1">
-                                <h2>What is your mood</h2>
+                                <h2>What is your mode?</h2>
                                 <textarea id="What-is-your-mood?"></textarea>
                             </div>
 
+                        </div>
+                    </div>
+                    <input type="range" id="volume" name="volume" min="0" max="10">
+                    <label for="volume">Head space</label>
+                </div>
+                <div class="row">
+                    <div class="range-wrap">
+                        <input type="range" class="range">
+                        <output class="bubble">Energy</output>
+                    </div>
+                    <div class="range-wrap">
+                        <input type="range" class="range" min="-10" max="140">
+                        <output class="bubble">Appetite</output>
+                        <button type="button color-solid-gold" id="caculte-mode">calculate</button>
+                        <!-- col for choices made -->
+                        <div class="row history">
+                            <ul></ul>
+                        </div>
                     </div>
                 </div>
-                            <!-- <input type="range" id="volume" name="volume"
-            min="0" max="10">
-            <label for="volume">Head space</label>
-        </div>
-    <div class="row">
-        <div class="range-wrap">
-            <input type="range" class="range">
-            <output class="bubble">Energy</output>
-        </div>
-        <div class="range-wrap">
-            <input type="range" class="range" min="-10" max="140">
-            <output class="bubble">Appetite</output> -->
-                    <!--col for choices made-->
-                    <div class="row history">
-                        <ul></ul>
-                    </div>
-                </div>
-            </div>
         </section>
         <section id="lower-container" class="border-double border-black border-8">
             <div id="left-card-container" class="">
                 <p>test Div Left</p>
             </div>
-            <div id="right-suggestions-container"> 
+            <div id="right-suggestions-container">
                 <p> Test Div Right </p>
                 <section>
                     <div id="suggestions-container" class="w-3/12">
