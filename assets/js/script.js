@@ -122,7 +122,26 @@ var seatFetch = function() {
 
 };
 
-//Handler for the cityButton on the intro screen
+//Function that generates all the elements for the sidebar
+var generateSidebar = function() {
+
+    //Check whether the sidebarTitle already exists...
+    //If not, create it and style it
+    if (!document.querySelector("#sidebar-title")) {
+        console.log("No sidebar h3 elements.");
+        var sidebarSection = $(sidebarContainer).children("section");
+        var sidebarTitle = document.createElement("h3");
+        sidebarContainer.setAttribute("class", "bg-green-200 w-1/3");
+        sidebarTitle.textContent = "Activity Suggestion:";
+        sidebarTitle.setAttribute("class", "font-lg text-white bg-green-400 text-center p-2 w-100%");
+        sidebarTitle.setAttribute("id", "sidebar-title");
+        sidebarSection.append(sidebarTitle);
+    }
+
+    //Below we can now append elements from the suggestion API calls
+
+}
+
 
 var generateCard = function(moodText, moodScore) {
     //Generate the elements for the main div, the header, description, score, and button
@@ -180,7 +199,10 @@ var generateCard = function(moodText, moodScore) {
     //Append the card container to the cardsDiv element
     var cardsDiv = document.querySelector("#cardsDiv");
     cardsDiv.appendChild(cardContainer);
-    cardsDiv.setAttribute("class", "flex flex-wrap justify-center items-center bg-red-200");
+    cardsDiv.setAttribute("class", "min-w-full flex flex-wrap justify-center items-center bg-red-200");
+
+    //At this point we can add styling to the sidebar div
+    generateSidebar();
 
 }
 
