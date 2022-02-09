@@ -157,7 +157,7 @@ var generateCard = function(moodText, moodScore) {
     //Generate the elements for the main div, the header, description, score, and button
     //div container
     var cardContainer = document.createElement("div");
-    cardContainer.setAttribute("class", "card");
+    cardContainer.setAttribute("class", "card", "border-white", "border-solid");
 
     //card header
     var cardHeader = document.createElement("h3");
