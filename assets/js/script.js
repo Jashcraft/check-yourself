@@ -37,24 +37,6 @@ var boredFetch = function() {
     });
 }
 
-// submitBtnEl.addEventListener('click', function (event) {
-//     // console.log("helloooo... Infini-dagger!!");
-//     event.preventDefault;
-//     var stateVal = stateSelectEl.value;
-//     userState = stateVal;
-
-//     fetch("https://api.seatgeek.com/2/events/?venue.state=" + stateVal + "&client_id=MjU1NTAzMTF8MTY0MzU5OTc0MS41NjYxMzg1&client_secret=b63b8c19928eaec5bc232406dd1a3f9b736e95c54062f429dee6e000c044de9a&per_page=5")
-//         .then(function (response) {
-//             return response.json();
-//         })
-//         .then(function (data) {
-//             console.log(data);
-//         })
-//         .catch(err => {
-//             console.error(err);
-//         });
-// });
-
 for (var i = 0; i < states.length; i++) {
     var optionEl = document.createElement("option")
     optionEl.value = states[i].abbreviation;
@@ -62,95 +44,6 @@ for (var i = 0; i < states.length; i++) {
 
     stateSelectEl.appendChild(optionEl);
 };
-
-// suggestionButtonEl.addEventListener('click', function (event) {
-//     // console.log("helloooo... Infini-dagger!!");
-//     event.preventDefault;
-//     $(".carousel-inner").empty();
-//     var stateVal = stateSelectEl.value;
-
-//     fetch("https://api.seatgeek.com/2/events/?venue.state=" + stateVal + "&client_id=MjU1NTAzMTF8MTY0MzU5OTc0MS41NjYxMzg1&client_secret=b63b8c19928eaec5bc232406dd1a3f9b736e95c54062f429dee6e000c044de9a&per_page=5")
-//         .then(function (response) {
-//             return response.json();
-//         })
-//         .then(function (data) {
-//             console.log(data);
-//             for (var i = 0; i < data.events.length; i++){
-//                 var eventTitle = data.events[i].title;
-//                 var eventTime = moment(data.events[i].datetime_local).format("dddd, MMMM Do YYYY, h:mm:ss a");
-//                 var venName = data.events[i].venue.name;
-//                 var venAddr = data.events[i].venue.address;
-//                 var venExtAddr = data.events[i].venue.extended_address;
-//                 var venUrl = data.events[i].venue.url;
-//                 var perfImg = data.events[i].performers[0].image;
-            
-            
-//                 var carouselItem = document.createElement("div");
-//                 if (i === 0){
-//                     carouselItem.classList = "carousel-item active relative float-left w-full";
-//                 } else {
-//                     carouselItem.classList = "carousel-item relative float-left w-full";
-//                 }
-                
-//                 var carouselImg = document.createElement("img");
-//                 carouselImg.src = perfImg;
-//                 carouselImg.classList = "rounded-lg transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl";
-
-//                 var carouselText = document.createElement("div");
-//                 carouselText.classList = "md:block absolute inset-x-1/4 text-center";
-
-//                 var carouselEventTitle = document.createElement("h2");
-//                 carouselEventTitle.className = "mt-12";
-//                 carouselEventTitle.textContent = eventTitle;
-
-//                 var carouselEventDate = document.createElement("h3");
-//                 carouselEventDate.textContent = eventTime;
-
-//                 var carouselVenueName = document.createElement("h4");
-//                 carouselVenueName.textContent = venName;
-
-//                 var carouselStreet = document.createElement("p");
-//                 carouselStreet.textContent = venAddr
-
-//                 var carouselCity = document.createElement("p");
-//                 carouselCity.textContent = venExtAddr;
-
-//                 var carouselUrl = document.createElement("a");
-//                 carouselUrl.href = venUrl;
-
-//                 var carouselTicketButton = document.createElement("button");
-//                 carouselTicketButton.type = "button";
-//                 carouselTicketButton.classList = "inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out"
-//                 carouselTicketButton.textContent = "Tickets";
-
-//                 carouselUrl.appendChild(carouselTicketButton);
-//                 carouselText.appendChild(carouselEventTitle);
-//                 carouselText.appendChild(carouselEventDate);
-//                 carouselText.appendChild(carouselVenueName);
-//                 carouselText.appendChild(carouselStreet);
-//                 carouselText.appendChild(carouselCity);
-//                 carouselText.appendChild(carouselUrl);
-
-//                 carouselItem.appendChild(carouselImg);
-//                 carouselItem.appendChild(carouselText);
-
-//                 $(".carousel-inner").append(carouselItem);
-//             };
-//         })
-
-//         .catch(err => {
-//             console.error(err);
-//         });
-
-//         fetch("http://www.boredapi.com/api/activity?type=relaxation")
-//         .then(function(response){
-//             return response.json();
-//         })
-//         .then(function(data){
-//             console.log(data);
-//         });
-
-// });
 
 var seatFetch = function() {
     console.log("userState: "+userState);
@@ -393,12 +286,3 @@ var logCity = function() {
 //listener for the city button
 var cityButtonEl = document.querySelector("#submit-city");
 cityButtonEl.addEventListener("click", logCity);
-
-//Listener for the "see suggestions" buttons within each card
-// introContainer.addEventListener("click", function(event) {   
-//     console.log(event);
-//     if (event.target === document.querySelector(".suggestionButton")) {
-//         //function call here
-//         console.log("Loading suggestions to sidebar...");
-//     };
-// });
