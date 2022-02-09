@@ -1,6 +1,6 @@
 //Global access variables and page elements
 var stateSelectEl = document.querySelector('#states');
-var submitBtnEl = document.querySelector('#submit-city');
+var stateSubmitEl = document.querySelector('#submit-state');
 var userState;
 var userMood;
 var cardsSection = document.querySelector("#left-card-container");
@@ -10,9 +10,9 @@ var introContainer = document.querySelector("#intro-container");
 var todayDate = moment().format("L");
 
 
+//LocalStorage handling for persistent card data
 var userMoodCards;
 if (JSON.parse(localStorage.getItem("moodCards")) === null) {
-    console.log("No user cards stored.");
     userMoodCards = [];
 }
 else {
@@ -33,6 +33,7 @@ var boredFetch = function() {
         return response.json();
     })
     .then(function(data){
+        console.log("Calling boredAPI...")
         console.log(data);
     });
 }
@@ -46,13 +47,12 @@ for (var i = 0; i < states.length; i++) {
 };
 
 var seatFetch = function() {
-    console.log("userState: "+userState);
     fetch("https://api.seatgeek.com/2/events/?venue.state=" + userState + "&client_id=MjU1NTAzMTF8MTY0MzU5OTc0MS41NjYxMzg1&client_secret=b63b8c19928eaec5bc232406dd1a3f9b736e95c54062f429dee6e000c044de9a&per_page=5")
     .then(function (response) {
         return response.json();
     })
     .then(function (data) {
-        console.log(data);
+        console.log("Calling seatGeek API...");
         for (var i = 0; i < data.events.length; i++){
             var eventTitle = data.events[i].title;
             var eventTime = moment(data.events[i].datetime_local).format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -163,8 +163,6 @@ var generateCard = function(moodText, moodScore) {
 
     //Add event listener
     suggestionButton.addEventListener("click", function(data) {
-        console.log("clicked a suggestion button");
-        console.log(briefDescription);
         // clears out existing crousel that may already be displayed 
         $(".carousel-inner").empty();
 
@@ -271,18 +269,14 @@ var loadMoodForm = function() {
     });
 };
 
-var logCity = function() {
+var logState = function() {
 
     //Assign the userState variable a new value based on the input from the intro section
     userState = stateSelectEl.value;
 
-    //Log the city input to a variable so it can be accessed on future logins
-    //This should eventually pull the value from the intro screen's form.
-    console.log("Logged user state of residence as "+userState);
-
+    //Log the state input to a variable so it can be accessed on future logins
     loadMoodForm();
 }
 
 //listener for the city button
-var cityButtonEl = document.querySelector("#submit-city");
-cityButtonEl.addEventListener("click", logCity);
+stateSubmitEl.addEventListener("click", logState);
