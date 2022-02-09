@@ -147,11 +147,11 @@ var generateCard = function(moodText, moodScore) {
     //Generate the elements for the main div, the header, description, score, and button
     //div container
     var cardContainer = document.createElement("div");
-    cardContainer.setAttribute("class", "card basis-1/3 flex-wrap shrink-0 p-3 bg-blue-300 w-1/4 flex flex-col justify-center items-center m-2");
+    cardContainer.setAttribute("class", "card basis-full md:basis-1/3 flex-wrap shrink-0 p-3 bg-blue-300 w-1/4 flex flex-col justify-center items-center m-1");
 
     //card header
     var cardHeader = document.createElement("h3");
-    cardHeader.setAttribute("class", "text-lg font-bold italic bg-blue-400 text-center w-100% text-white");
+    cardHeader.setAttribute("class", "text-lg p-2 font-bold italic bg-blue-400 text-center w-100% text-white");
     cardHeader.textContent = "Entry from "+todayDate;
 
     //card brief description
@@ -199,7 +199,7 @@ var generateCard = function(moodText, moodScore) {
     //Append the card container to the cardsDiv element
     var cardsDiv = document.querySelector("#cardsDiv");
     cardsDiv.appendChild(cardContainer);
-    cardsDiv.setAttribute("class", "min-w-full flex flex-wrap justify-center items-center bg-red-200");
+    cardsDiv.setAttribute("class", "min-w-full flex flex-wrap justify-center items-center p-2 bg-red-200");
 
     //At this point we can add styling to the sidebar div
     generateSidebar();
@@ -215,35 +215,31 @@ var loadMoodForm = function() {
     //Add h2 "How are you feeling today?"
     var moodTitle = document.createElement("h2");
     moodTitle.textContent = "How are you feeling today?";
-    moodTitle.setAttribute("class", ""); //Add necessary styling here
+    moodTitle.setAttribute("class", "mb-3");
     introContainer.appendChild(moodTitle);
 
     //Add the form to hold the textarea, dropdown, and submit
     var moodForm = document.createElement("form");
     moodForm.setAttribute("id", "moodForm");
-
-    //Add textarea "Describe your mood"
-    var moodTextLabel = document.createElement("label");
-    moodTextLabel.setAttribute("for", "moodTextArea");
-    moodTextLabel.setAttribute("id", "moodTextLabel"); 
-    moodTextLabel.setAttribute("class", ""); //Set classes for the label
-    moodTextLabel.textContent = "Describe your mood";
+    moodForm.setAttribute("class", "min-h-1/2 flex flex-col justify-center items-center");
 
     var moodTextArea = document.createElement("textarea");
     moodTextArea.setAttribute("id", "moodTextArea");
-    moodTextArea.setAttribute("class", ""); //set classes for textArea
+    moodTextArea.setAttribute("class", "mb-8");
+    moodTextArea.setAttribute("placeholder", "Describe Your Mood");
 
     //Add label "Rate your mood"
     var moodRatingLabel = document.createElement("label");
     moodRatingLabel.setAttribute("for", "moodRating");
     moodRatingLabel.setAttribute("id", "moodRatingLabel");
-    moodRatingLabel.setAttribute("class", "");
+    moodRatingLabel.setAttribute("class", "min-w-full text-center mb-2");
     moodRatingLabel.textContent = "Rate your mood today";
 
     //Add dropdown to hold number values
     var moodRating = document.createElement("select");
     moodRating.setAttribute("name", "moodRating");
     moodRating.setAttribute("id", "moodRating");
+    moodRating.setAttribute("class", "w-1/3 text-center");
 
     //Append options to select
     for (var i = 0; i < 5; i++) {
@@ -259,9 +255,9 @@ var loadMoodForm = function() {
     moodSubmitButton.setAttribute("type", "submit");
     moodSubmitButton.setAttribute("id", "moodSubmitButton");
     moodSubmitButton.textContent = "Submit";
+    moodSubmitButton.setAttribute("class", "my-4 p-1.5 bg-blue-500 text-white font-bold text-center hover:bg-blue-700 rounded");
 
     //Append elements to the form
-    moodForm.appendChild(moodTextLabel);
     moodForm.appendChild(moodTextArea);
     moodForm.appendChild(moodRatingLabel);
     moodForm.appendChild(moodRating);
