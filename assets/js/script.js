@@ -128,7 +128,7 @@ var generateCard = function(moodText, moodScore) {
     //Generate the elements for the main div, the header, description, score, and button
     //div container
     var cardContainer = document.createElement("div");
-    cardContainer.setAttribute("class", "card");
+    cardContainer.setAttribute("class", "card basis-1/3 flex-wrap shrink-0 p-3 bg-blue-300 w-1/4 flex flex-col justify-center items-center m-2");
 
     //card header
     var cardHeader = document.createElement("h3");
@@ -179,6 +179,7 @@ var generateCard = function(moodText, moodScore) {
     //Append the card container to the cardsDiv element
     var cardsDiv = document.querySelector("#cardsDiv");
     cardsDiv.appendChild(cardContainer);
+    cardsDiv.setAttribute("class", "flex flex-wrap justify-center items-center bg-red-200");
 
 }
 
