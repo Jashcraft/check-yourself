@@ -132,6 +132,7 @@ var generateCard = function(moodText, moodScore) {
 
     //card header
     var cardHeader = document.createElement("h3");
+    cardHeader.setAttribute("class", "text-lg font-bold italic bg-blue-400 text-center w-100% text-white");
     cardHeader.textContent = "Entry from "+todayDate;
 
     //card brief description
@@ -152,7 +153,7 @@ var generateCard = function(moodText, moodScore) {
 
     //card button "See Suggestions"
     var suggestionButton = document.createElement("button");
-    suggestionButton.setAttribute("class", "suggestionButton");
+    suggestionButton.setAttribute("class", "suggestionButton bg-blue-500 font-bold p-2 my-2 rounded hover:bg-blue-800 text-white");
     suggestionButton.textContent = "See Suggestions";
 
     //Append items to the card container
