@@ -309,11 +309,17 @@ var loadMoodForm = function() {
 
 var logState = function() {
 
-    //Log the state input to a variable so it can be accessed on future logins
-    userState = stateSelectEl.value;
+    //Log the state input to a variable so it can be accessed on future logins, or if
+    //it already exists, pull it from localStorage
+    if (!JSON.parse(localStorage.getItem("userState"))) {
+        userState = stateSelectEl.value;
+    }
+    else {
+        userState = JSON.parse(localStorage.getItem("userState"));
+    }
 
     //Assign the userState variable a new value based on the input from the intro section
-    localStorage.setItem("userState", JSON.stringify({state: userState}));
+    localStorage.setItem("userState", JSON.stringify(userState));
     loadMoodForm();
 }
 
