@@ -122,6 +122,16 @@ var seatFetch = function() {
 
 };
 
+//Functions to handle localStorage
+var loadCards = function() {
+    console.log(JSON.parse(localStorage.getItem("cards")));
+};
+
+var storeCards = function() {
+    localStorage.setItem("cards", JSON.stringify(userMoodCards));
+    loadCards();
+};
+
 //Function that generates all the elements for the sidebar
 var generateSidebar = function() {
 
@@ -195,6 +205,12 @@ var generateCard = function(moodText, moodScore) {
         }
 
     });
+
+    //Add the contents of the mood card to localStorage
+    userMoodCards.push({date: todayDate, score: moodScore, description: moodText});
+    console.log("Appended to userMoodCards.  Now contains:");
+    console.log(userMoodCards);
+    storeCards();
 
     //Append the card container to the cardsDiv element
     var cardsDiv = document.querySelector("#cardsDiv");
@@ -297,6 +313,11 @@ var logState = function() {
     //Log the state input to a variable so it can be accessed on future logins
     loadMoodForm();
 }
+
+//If the user has already provided their state of residence, instead of showing the intro
+//section, the site should simply load the cards from localStorage
+
+//Otherwise, it should load the intro screen
 
 //listener for the city button
 stateSubmitEl.addEventListener("click", logState);
