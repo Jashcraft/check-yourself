@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)file:///C:/Users/erika/OneDrive/aschool/project-1/check-yourself/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Check Yourself</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="">
+    <script src="./Check Yourself_files/saved_resource"></script>
+    <link rel="stylesheet" href="./Check Yourself_files/style.css">
+    <link rel="stylesheet" href="./Check Yourself_files/all.min.css">
+    <link rel="stylesheet" href="./Check Yourself_files/css2">
+    <link rel="stylesheet" href="./Check Yourself_files/index.min.css">
+<style>/* ! tailwindcss v3.0.18 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*, ::before, ::after{--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.absolute{position:absolute}.relative{position:relative}.top-0{top:0px}.bottom-0{bottom:0px}.left-0{left:0px}.right-8{right:2rem}.inline-block{display:inline-block}.flex{display:flex}.w-3\/12{width:25%}.w-full{width:100%}.items-center{align-items:center}.justify-center{justify-content:center}.rounded-md{border-radius:0.375rem}.border-2{border-width:2px}.border-8{border-width:8px}.border-0{border-width:0px}.border-double{border-style:double}.border-black{--tw-border-opacity:1;border-color:rgb(0 0 0 / var(--tw-border-opacity))}.bg-amber-800{--tw-bg-opacity:1;background-color:rgb(146 64 14 / var(--tw-bg-opacity))}.bg-teal-400{--tw-bg-opacity:1;background-color:rgb(45 212 191 / var(--tw-bg-opacity))}.bg-no-repeat{background-repeat:no-repeat}.p-0{padding:0px}.text-center{text-align:center}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.hover\:no-underline:hover{-webkit-text-decoration-line:none;text-decoration-line:none}.hover\:outline-none:hover{outline:2px solid transparent;outline-offset:2px}.focus\:no-underline:focus{-webkit-text-decoration-line:none;text-decoration-line:none}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}</style><style>/* ! tailwindcss v3.0.18 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*, ::before, ::after{--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.absolute{position:absolute}.relative{position:relative}.top-0{top:0px}.bottom-0{bottom:0px}.left-0{left:0px}.right-8{right:2rem}.inline-block{display:inline-block}.flex{display:flex}.w-3\/12{width:25%}.w-full{width:100%}.items-center{align-items:center}.justify-center{justify-content:center}.rounded-md{border-radius:0.375rem}.border-2{border-width:2px}.border-8{border-width:8px}.border-0{border-width:0px}.border-double{border-style:double}.border-black{--tw-border-opacity:1;border-color:rgb(0 0 0 / var(--tw-border-opacity))}.bg-amber-800{--tw-bg-opacity:1;background-color:rgb(146 64 14 / var(--tw-bg-opacity))}.bg-teal-400{--tw-bg-opacity:1;background-color:rgb(45 212 191 / var(--tw-bg-opacity))}.bg-no-repeat{background-repeat:no-repeat}.p-0{padding:0px}.text-center{text-align:center}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.hover\:no-underline:hover{-webkit-text-decoration-line:none;text-decoration-line:none}.hover\:outline-none:hover{outline:2px solid transparent;outline-offset:2px}.focus\:no-underline:focus{-webkit-text-decoration-line:none;text-decoration-line:none}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}</style></head>
+
+<body>
+    <header class="hero bg-amber-800 rounded-md text-xl">
+        <div class="tex-align-center text-white">
+            <h1 class="app-title tex-align-center text-shadow-gold"><i class="fab checkmark"></i> check Yourself</h1>
+        </div>
+    </header>
+    <!-- find your location-->
+    <main>
+        <section class="bg-teal-400 rounded-md" id="intro-container">
+            <div id="intro-content" class="container align-items-center">
+                <div class="text-center row align-items-around">
+                    <div class="row-1">
+                        <h2>Where are you?</h2>
+                        <div class="row">
+                            <div>
+                                <select name="state" id="states">
+                                <option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District Of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VI">Virgin Islands</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option><option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District Of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VI">Virgin Islands</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option></select>
+                                <button id="submit-city" class="border-2 border-black" style="background-color: goldenrod;">Submit</button>
+                            </div>
+                        </div>
+
+                        <div class="container align-items-center">
+                            <div class="row align-items-around row-1">
+                                <h2>What is your mode?</h2>
+                                <textarea id="What-is-your-mood?"></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                    <input type="range" id="volume" name="volume" min="0" max="10">
+                    <label for="volume">Head space</label>
+                </div>
+                <div class="row">
+                    <div class="range-wrap">
+                        <input type="range" class="range">
+                        <output class="bubble">Energy</output>
+                    </div>
+                    <div class="range-wrap">
+                        <input type="range" class="range" min="-10" max="140">
+                        <output class="bubble">Appetite</output>
+                        <button type="button color-solid-gold" id="caculte-mode">calculate</button>
+                        <!-- col for choices made -->
+                        <div class="row history">
+                            <ul></ul>
+                        </div>
+                    </div>
+                </div>
+        </div></section>
+        <section id="lower-container" class="border-double border-black border-8">
+            <div id="left-card-container" class="">
+                <p>test Div Left</p>
+            </div>
+            <div id="right-suggestions-container">
+                <p> Test Div Right </p>
+                <section>
+                    <div id="suggestions-container" class="w-3/12">
+                        <div id="eventCarousel" class="carousel slide relative pointer-event" data-bs-ride="carousel">
+                            <div class="carousel-inner relative w-full ">
+
+                            </div>
+                            <button class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-8" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+    </main>
+    <script src="./Check Yourself_files/jquery-3.6.0.min.js.download" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./Check Yourself_files/moment.min.js.download"></script>
+    <script src="./Check Yourself_files/states.js.download"></script>
+    <script src="./Check Yourself_files/script.js.download"></script>
+    <script src="./Check Yourself_files/saved_resource"></script>
+    <script src="./Check Yourself_files/index.min.js.download"></script>
+
+
+</body></html>
