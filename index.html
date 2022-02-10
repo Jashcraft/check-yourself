@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
 </head>
 
-<body>
+<body class="box-border">
     <header class="hero bg-yellow-900 rounded-md">
         <div class="text-center text-white">
             <h1 class="app-title"><i class="fab checkmark"></i> check Yourself</h1>
@@ -22,7 +22,7 @@
     </header>
     <!-- find your location-->
     <main>
-        <section class="bg-lime-900 rounded-md" id="intro-container">
+        <section class="p-4 bg-lime-900 flex flex-col min-h-1/3 justify-center items-center rounded-md" id="intro-container">
             <div id="intro-content" class="container align-items-start">
                 <div class="row align-items-around">
                     <div class="row-1">
@@ -31,7 +31,7 @@
                             <div>
                                 <select name="state" id="states">
                                 </select>
-                                <button type="button" id="submit-city">Submit</button>
+                                <button type="button" id="submit-state">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -55,12 +55,10 @@
                 </div>
             </div>
         </section>
-        <section id="lower-container" class="border-double border-black border-8">
-            <div id="left-card-container" class="">
-                <p>test Div Left</p>
+        <section id="lower-container" class="flex">
+            <div id="left-card-container" class="flex basis-2/3">
             </div>
-            <div id="right-suggestions-container"> 
-                <p> Test Div Right </p>
+            <div id="right-suggestions-container" class="flex basis-1/3 flex-col">
                 <section>
                     <div id="suggestions-container" class="w-3/12">
                         <div id="eventCarousel" class="carousel slide relative" data-bs-ride="carousel">
