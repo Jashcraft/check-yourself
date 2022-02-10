@@ -12,11 +12,11 @@ var todayDate = moment().format("L");
 
 //LocalStorage handling for persistent card data
 var userMoodCards;
-if (JSON.parse(localStorage.getItem("moodCards")) === null) {
+if (JSON.parse(localStorage.getItem("cards")) === null) {
     userMoodCards = [];
 }
 else {
-    userMoodCards = JSON.parse(localStorage.getItem("moodCards"));
+    userMoodCards = JSON.parse(localStorage.getItem("cards"));
 }
 
 for (var i = 0; i < states.length; i++) {
@@ -45,6 +45,8 @@ for (var i = 0; i < states.length; i++) {
 
     stateSelectEl.appendChild(optionEl);
 };
+
+//debugger;
 
 var seatFetch = function() {
     fetch("https://api.seatgeek.com/2/events/?venue.state=" + userState + "&client_id=MjU1NTAzMTF8MTY0MzU5OTc0MS41NjYxMzg1&client_secret=b63b8c19928eaec5bc232406dd1a3f9b736e95c54062f429dee6e000c044de9a&per_page=5")
@@ -122,6 +124,82 @@ var seatFetch = function() {
 
 };
 
+//Functions to handle localStorage
+var loadCards = function() {
+
+    //Clear any previously-appended elements within the cardsDiv section by removing and
+    //replacing cardsDiv
+    cardsSection.removeChild(document.querySelector("#cardsDiv"));
+    var cardsDiv = document.createElement("div");
+    cardsDiv.setAttribute("id", "cardsDiv");
+    cardsDiv.setAttribute("class", "min-w-full flex flex-wrap justify-center p-2 bg-red-200");
+    cardsSection.appendChild(cardsDiv);
+
+    //For each index in the localStorage cards array, generate a card and append to cardsDiv
+    console.log(userMoodCards);
+    for (var i = 0; i < userMoodCards.length; i++) {
+        var cardData = userMoodCards[i];
+        console.log("cardData.date: "+cardData.date);
+        console.log("cardData.score: "+cardData.score);
+        console.log("cardData.description: "+cardData.description);
+
+        //Create card elements
+
+        var card = document.createElement("div");
+        card.setAttribute("class", "card basis-full md:basis-1/3 flex-wrap shrink-0 p-3 bg-blue-300 w-1/4 flex flex-col justify-between items-center m-1");
+        
+        var cardDate = document.createElement("h3");
+        cardDate.textContent = "Entry from "+cardData.date;
+        cardDate.setAttribute("class", "text-lg p-2 font-bold italic bg-blue-400 text-center w-100% text-white");
+
+        var cardContent = document.createElement("p");
+        cardContent.textContent = cardData.description;
+        cardContent.setAttribute("class", "");
+
+        var cardScore = document.createElement("h3");
+        cardScore.textContent = "Mood Score: "+cardData.score;
+        cardScore.setAttribute("class", "");
+
+        var suggestionButton = document.createElement("button");
+        suggestionButton.textContent = "See Suggestions";
+        suggestionButton.setAttribute("class", "suggestionButton bg-blue-500 font-bold p-2 my-2 rounded hover:bg-blue-800 text-white");
+
+
+        //Append the items to a card
+        card.append(cardDate);
+        card.append(cardContent);
+        card.append(cardScore);
+        card.append(suggestionButton);
+
+        //Append to the cardsDiv
+        cardsDiv.append(card);
+
+        //Recreate the sidebar
+        generateSidebar();
+
+        //Event handler for card suggestions
+        //Add event listener
+        suggestionButton.addEventListener("click", function(data) {
+        // clears out existing crousel that may already be displayed 
+        $(".carousel-inner").empty();
+
+        //Evaluate user mood to determine which fetch is used to populate the card
+        if (cardData.score >= 3) {
+            seatFetch();
+        }
+        else {
+            boredFetch();
+        }
+
+    });
+
+    }
+};
+
+var storeCards = function() {
+    localStorage.setItem("cards", JSON.stringify(userMoodCards));
+};
+
 //Function that generates all the elements for the sidebar
 var generateSidebar = function() {
 
@@ -147,7 +225,7 @@ function generateCard(moodText, moodScore) {
     //Generate the elements for the main div, the header, description, score, and button
     //div container
     var cardContainer = document.createElement("div");
-    cardContainer.setAttribute("class", "card basis-full md:basis-1/3 flex-wrap shrink-0 p-3 bg-blue-300 w-1/4 flex flex-col justify-center items-center m-1");
+    cardContainer.setAttribute("class", "card basis-full md:basis-1/3 flex-wrap shrink-0 p-3 bg-blue-300 w-1/4 flex flex-col justify-between items-center m-1");
 
     //card header
     var cardHeader = document.createElement("h3");
@@ -196,10 +274,16 @@ function generateCard(moodText, moodScore) {
 
     });
 
+    //Add the contents of the mood card to localStorage
+    userMoodCards.push({date: todayDate, score: moodScore, description: moodText});
+    console.log("Appended to userMoodCards.  Now contains:");
+    console.log(userMoodCards);
+    storeCards();
+
     //Append the card container to the cardsDiv element
     var cardsDiv = document.querySelector("#cardsDiv");
     cardsDiv.appendChild(cardContainer);
-    cardsDiv.setAttribute("class", "min-w-full flex flex-wrap justify-center items-center p-2 bg-red-200");
+    cardsDiv.setAttribute("class", "min-w-full flex flex-wrap justify-center p-2 bg-red-200");
 
     //At this point we can add styling to the sidebar div
     generateSidebar();
@@ -287,16 +371,36 @@ var loadMoodForm = function() {
         moodTextArea.value = "";
         moodRating.value = ""
     });
+
+    //Load any cards that may exist in localStorage
+    loadCards();
 };
 
 var logState = function() {
 
-    //Assign the userState variable a new value based on the input from the intro section
-    userState = stateSelectEl.value;
+    //Log the state input to a variable so it can be accessed on future logins, or if
+    //it already exists, pull it from localStorage
+    if (!JSON.parse(localStorage.getItem("userState"))) {
+        userState = stateSelectEl.value;
+    }
+    else {
+        userState = JSON.parse(localStorage.getItem("userState"));
+    }
 
-    //Log the state input to a variable so it can be accessed on future logins
+    //Assign the userState variable a new value based on the input from the intro section
+    localStorage.setItem("userState", JSON.stringify(userState));
     loadMoodForm();
 }
 
-//listener for the city button
+//If the user has not already provided their state of residence, intro screen should appear.
+if (JSON.parse(localStorage.getItem("userState")) === null) {
+    console.log("No state has been selected");
+}
+//Otherwise, it should load the existing cards from localStorage
+else {
+    userState = JSON.parse(localStorage.getItem("userState"));
+    logState();
+};
+
+//listener for states submit button
 stateSubmitEl.addEventListener("click", logState);
