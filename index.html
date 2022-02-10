@@ -14,28 +14,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
 </head>
 
-<body class="box-border">
-    <header class="hero bg-yellow-900 rounded-md">
-        <div class="text-center text-white">
-            <h1 class="app-title"><i class="fab checkmark"></i> check Yourself</h1>
+<body class="box-border bg-neutral-600 font-serif">
+    <header class="hero rounded-lg h-15 bg-slate-500">
+        <div class="text-center text-amber-500 py-5 font-semibold italic">
+            <h1 class="app-title"><i class="fab checkmark"></i> Check Yourself </h1>
         </div>
     </header>
     <!-- find your location-->
     <main>
-        <section class="p-4 bg-lime-900 flex flex-col min-h-1/3 justify-center items-center rounded-md" id="intro-container">
-            <div id="intro-content" class="container align-items-start">
+        <section class="p-4 flex flex-col min-h-1/3 text-center rounded-lg" id="intro-container">
+            <div id="intro-content" class="container align-items-start min-w-full">
                 <div class="row align-items-around">
-                    <div class="row-1">
-                        <h2>Where are you?</h2>
+                    <div class="row-1 ">
+                        <h2 class="text-stone-300">Where are you?</h2>
                         <div class="row">
+                            <div class="py-3">
+                                <select name="state" id="states"></select>
+                            </div>
                             <div>
-                                <select name="state" id="states">
-                                </select>
-                                <button type="button" id="submit-state">Submit</button>
+                                <button type="button" id="submit-state" class="bg-amber-500 rounded-lg py-1 px-2 border-2 border-slate-500 text-yellow-800">Submit</button>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
                             <!-- <input type="range" id="volume" name="volume"
             min="0" max="10">
             <label for="volume">Head space</label>
@@ -66,14 +68,14 @@
 
                             </div>
                             <button
-                                class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+                                class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0 visually-hidden"
                                 type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon inline-block bg-no-repeat"
                                     aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
                             <button
-                                class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-8"
+                                class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-8 visually-hidden"
                                 type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
                                 <span class="carousel-control-next-icon inline-block bg-no-repeat"
                                     aria-hidden="true"></span>

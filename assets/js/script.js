@@ -143,7 +143,7 @@ var generateSidebar = function() {
 }
 
 
-var generateCard = function(moodText, moodScore) {
+function generateCard(moodText, moodScore) {
     //Generate the elements for the main div, the header, description, score, and button
     //div container
     var cardContainer = document.createElement("div");
@@ -168,7 +168,7 @@ var generateCard = function(moodText, moodScore) {
 
     //card score
     var cardScore = document.createElement("h3");
-    cardScore.textContent = "Mood Score: "+moodScore;
+    cardScore.textContent = "Mood Score: " + moodScore;
 
     //card button "See Suggestions"
     var suggestionButton = document.createElement("button");
