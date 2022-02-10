@@ -51,7 +51,7 @@ var boredFetch = function() {
 
         var carouselItem = document.createElement("div");
         carouselItem.classList = "carousel-item active relative float-left w-full overflow-auto";
-
+        //debugger
         boredCarouselImage = document.createElement("img")
         if (boredType === "busywork") {
             boredCarouselImage.src = "./assets/images/busywork.jpg"
@@ -66,7 +66,7 @@ var boredFetch = function() {
             boredCarouselImage.src = "./assets/images/diy.jpg"
         }
         else if (boredType === "educational"){
-            boredCarouselImage = "./assets/images/educational.jpg"
+            boredCarouselImage = "./assets/images/education.jpg"
         }
         else if (boredType === "music"){
             boredCarouselImage.src = "./assets/images/music.jpg"
