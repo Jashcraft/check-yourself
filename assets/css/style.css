@@ -19,4 +19,8 @@ button {
 carousel{
     position:center;
 }
+;
 
+.bg-blue-400 {
+    background-color: red;
+}
