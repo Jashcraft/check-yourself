@@ -46,6 +46,8 @@ for (var i = 0; i < states.length; i++) {
     stateSelectEl.appendChild(optionEl);
 };
 
+//debugger;
+
 var seatFetch = function() {
     fetch("https://api.seatgeek.com/2/events/?venue.state=" + userState + "&client_id=MjU1NTAzMTF8MTY0MzU5OTc0MS41NjYxMzg1&client_secret=b63b8c19928eaec5bc232406dd1a3f9b736e95c54062f429dee6e000c044de9a&per_page=5")
     .then(function (response) {
@@ -307,17 +309,23 @@ var loadMoodForm = function() {
 
 var logState = function() {
 
-    //Assign the userState variable a new value based on the input from the intro section
+    //Log the state input to a variable so it can be accessed on future logins
     userState = stateSelectEl.value;
 
-    //Log the state input to a variable so it can be accessed on future logins
+    //Assign the userState variable a new value based on the input from the intro section
+    localStorage.setItem("userState", JSON.stringify({state: userState}));
     loadMoodForm();
 }
 
-//If the user has already provided their state of residence, instead of showing the intro
-//section, the site should simply load the cards from localStorage
+//If the user has not already provided their state of residence, intro screen should appear.
+if (JSON.parse(localStorage.getItem("userState")) === null) {
+    console.log("No state has been selected");
+}
+//Otherwise, it should load the existing cards from localStorage
+else {
+    userState = JSON.parse(localStorage.getItem("userState"));
+    logState();
+};
 
-//Otherwise, it should load the intro screen
-
-//listener for the city button
+//listener for states submit button
 stateSubmitEl.addEventListener("click", logState);
