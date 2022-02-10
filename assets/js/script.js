@@ -132,7 +132,7 @@ var loadCards = function() {
     cardsSection.removeChild(document.querySelector("#cardsDiv"));
     var cardsDiv = document.createElement("div");
     cardsDiv.setAttribute("id", "cardsDiv");
-    cardsDiv.setAttribute("class", "min-w-full flex flex-wrap justify-center p-2 bg-red-200");
+    cardsDiv.setAttribute("class", "min-w-full flex flex-wrap justify-center p-2 bg-slate-400");
     cardsSection.appendChild(cardsDiv);
 
     //For each index in the localStorage cards array, generate a card and append to cardsDiv
@@ -146,15 +146,15 @@ var loadCards = function() {
         //Create card elements
 
         var card = document.createElement("div");
-        card.setAttribute("class", "card basis-full md:basis-1/3 flex-wrap shrink-0 p-3 bg-blue-300 w-1/4 flex flex-col justify-between items-center m-1");
+        card.setAttribute("class", "card basis-full md:basis-1/3 flex-wrap shrink-0 p-3 bg-neutral-600 w-1/4 flex flex-col justify-between items-center m-1");
         
         var cardDate = document.createElement("h3");
         cardDate.textContent = "Entry from "+cardData.date;
-        cardDate.setAttribute("class", "text-lg p-2 font-bold italic bg-blue-400 text-center w-100% text-white");
+        cardDate.setAttribute("class", "text-lg p-2 font-bold italic bg-slate-400 text-center w-100% text-amber-100");
 
-        var cardContent = document.createElement("p");
-        cardContent.textContent = cardData.description;
-        cardContent.setAttribute("class", "");
+        var cardDescription = document.createElement("p");
+        cardDescription.textContent = cardData.description;
+        cardDescription.setAttribute("class", "bg-slate-300 text-center m-3 p-3");
 
         var cardScore = document.createElement("h3");
         cardScore.textContent = "Mood Score: "+cardData.score;
@@ -162,14 +162,19 @@ var loadCards = function() {
 
         var suggestionButton = document.createElement("button");
         suggestionButton.textContent = "See Suggestions";
-        suggestionButton.setAttribute("class", "suggestionButton bg-blue-500 font-bold p-2 my-2 rounded hover:bg-blue-800 text-white");
+        suggestionButton.setAttribute("class", "suggestionButton bg-amber-500 border-slate-500 text-yellow-800 font-bold p-2 my-2 rounded hover:bg-amber-700 hover:text-yellow-300");
 
+        var cardContent = document.createElement("div");
+        cardContent.setAttribute("class", "flex flex-col p-3 w-4/5 justify-between items-center bg-slate-300 mt-2");
+
+        //Append items to card content div
+        cardContent.append(cardDescription);
+        cardContent.append(cardScore);
+        cardContent.append(suggestionButton);
 
         //Append the items to a card
         card.append(cardDate);
         card.append(cardContent);
-        card.append(cardScore);
-        card.append(suggestionButton);
 
         //Append to the cardsDiv
         cardsDiv.append(card);
@@ -209,9 +214,9 @@ var generateSidebar = function() {
         console.log("No sidebar h3 elements.");
         var sidebarSection = $(sidebarContainer).children("section");
         var sidebarTitle = document.createElement("h3");
-        sidebarContainer.setAttribute("class", "bg-green-200 w-1/3");
+        sidebarContainer.setAttribute("class", "bg-slate-300 border-l-4 border-slate-600 w-1/3");
         sidebarTitle.textContent = "Activity Suggestion:";
-        sidebarTitle.setAttribute("class", "font-lg text-white bg-green-400 text-center p-2 w-100%");
+        sidebarTitle.setAttribute("class", "text-xl font-bold text-amber-100 bg-slate-400 text-center p-2 w-100%");
         sidebarTitle.setAttribute("id", "sidebar-title");
         sidebarSection.append(sidebarTitle);
     }
@@ -225,11 +230,11 @@ function generateCard(moodText, moodScore) {
     //Generate the elements for the main div, the header, description, score, and button
     //div container
     var cardContainer = document.createElement("div");
-    cardContainer.setAttribute("class", "card basis-full md:basis-1/3 flex-wrap shrink-0 p-3 bg-blue-300 w-1/4 flex flex-col justify-between items-center m-1");
+    cardContainer.setAttribute("class", "card basis-full md:basis-1/3 flex-wrap shrink-0 p-3 bg-neutral-600 w-1/4 flex flex-col justify-between items-center m-1");
 
     //card header
     var cardHeader = document.createElement("h3");
-    cardHeader.setAttribute("class", "text-lg p-2 font-bold italic bg-blue-400 text-center w-100% text-white");
+    cardHeader.setAttribute("class", "text-lg p-2 font-bold italic bg-slate-400 text-center w-100% text-white");
     cardHeader.textContent = "Entry from "+todayDate;
 
     //card brief description
@@ -250,14 +255,21 @@ function generateCard(moodText, moodScore) {
 
     //card button "See Suggestions"
     var suggestionButton = document.createElement("button");
-    suggestionButton.setAttribute("class", "suggestionButton bg-blue-500 font-bold p-2 my-2 rounded hover:bg-blue-800 text-white");
+    suggestionButton.setAttribute("class", "suggestionButton bg-amber-500 border-slate-500 text-yellow-800 font-bold p-2 my-2 rounded hover:bg-amber-700 hover:text-yellow-300");
     suggestionButton.textContent = "See Suggestions";
+
+    //Card content div
+    var cardContent = document.createElement("div");
+    cardContent.setAttribute("class", "flex flex-col p-3 w-4/5 justify-between items-center bg-slate-300 mt-2");
+
+    //Append content to div
+    cardContent.appendChild(cardDescription);
+    cardContent.appendChild(cardScore);
+    cardContent.appendChild(suggestionButton);
 
     //Append items to the card container
     cardContainer.appendChild(cardHeader);
-    cardContainer.appendChild(cardDescription);
-    cardContainer.appendChild(cardScore);
-    cardContainer.appendChild(suggestionButton);
+    cardContainer.appendChild(cardContent);
 
     //Add event listener
     suggestionButton.addEventListener("click", function(data) {
@@ -283,7 +295,7 @@ function generateCard(moodText, moodScore) {
     //Append the card container to the cardsDiv element
     var cardsDiv = document.querySelector("#cardsDiv");
     cardsDiv.appendChild(cardContainer);
-    cardsDiv.setAttribute("class", "min-w-full flex flex-wrap justify-center p-2 bg-red-200");
+    cardsDiv.setAttribute("class", "min-w-full flex flex-wrap justify-center p-2 bg-slate-400");
 
     //At this point we can add styling to the sidebar div
     generateSidebar();
@@ -299,7 +311,7 @@ var loadMoodForm = function() {
     //Add h2 "How are you feeling today?"
     var moodTitle = document.createElement("h2");
     moodTitle.textContent = "How are you feeling today?";
-    moodTitle.setAttribute("class", "mb-3");
+    moodTitle.setAttribute("class", "mb-3 text-amber-500 text-xl");
     introContainer.appendChild(moodTitle);
 
     //Add the form to hold the textarea, dropdown, and submit
@@ -316,7 +328,7 @@ var loadMoodForm = function() {
     var moodRatingLabel = document.createElement("label");
     moodRatingLabel.setAttribute("for", "moodRating");
     moodRatingLabel.setAttribute("id", "moodRatingLabel");
-    moodRatingLabel.setAttribute("class", "min-w-full text-center mb-2");
+    moodRatingLabel.setAttribute("class", "min-w-full text-center mb-2 text-amber-500 text-xl");
     moodRatingLabel.textContent = "Rate your mood today";
 
     //Add dropdown to hold number values
@@ -339,7 +351,7 @@ var loadMoodForm = function() {
     moodSubmitButton.setAttribute("type", "submit");
     moodSubmitButton.setAttribute("id", "moodSubmitButton");
     moodSubmitButton.textContent = "Submit";
-    moodSubmitButton.setAttribute("class", "my-4 p-1.5 bg-blue-500 text-white font-bold text-center hover:bg-blue-700 rounded");
+    moodSubmitButton.setAttribute("class", "my-4 p-1.5 bg-amber-500 text-white font-bold text-center hover:bg-amber-700 rounded");
 
     //Append elements to the form
     moodForm.appendChild(moodTextArea);
