@@ -28,7 +28,7 @@ for (var i = 0; i < states.length; i++) {
 };
 
 var boredFetch = function() {
-    fetch("http://www.boredapi.com/api/activity?type=cooking")
+    fetch("http://www.boredapi.com/api/activity")
     .then(function(response){
         return response.json();
     })
@@ -50,39 +50,35 @@ var boredFetch = function() {
         console.log(boredParticipants);
 
         var carouselItem = document.createElement("div");
-        if (i === 0) {
-            carouselItem.classList = "carousel-item active relative float-left w-full";
-        } else {
-            carouselItem.classList = "carousel-item relative float-left w-full";
-        }
+        carouselItem.classList = "carousel-item active relative float-left w-full overflow-auto";
 
         boredCarouselImage = document.createElement("img")
         if (boredType === "busywork") {
-            boredCarouselImage.src = "../images/busywork.jpg"
+            boredCarouselImage.src = "./assets/images/busywork.jpg"
         }
         else if (boredType === "charity"){
-            boredCarouselImage.src = "../images/charity.jpg"
+            boredCarouselImage.src = "./assets/images/charity.jpg"
         }
         else if (boredType === "cooking"){
-            boredCarouselImage.src = "../images/coking.jpg"
+            boredCarouselImage.src = "./assets/images/coking.jpg"
         }
         else if (boredType === "diy"){
-            boredCarouselImage.src = "../images/diy.jpg"
+            boredCarouselImage.src = "./assets/images/diy.jpg"
         }
         else if (boredType === "educational"){
-            boredCarouselImage = "../images/educational.jpg"
+            boredCarouselImage = "./assets/images/educational.jpg"
         }
         else if (boredType === "music"){
-            boredCarouselImage.src = "../images/music.jpg"
+            boredCarouselImage.src = "./assets/images/music.jpg"
         }
         else if (boredType === "recreational"){
-            boredCarouselImage.src = "../images/red.jpg"
+            boredCarouselImage.src = "./assets/images/red.jpg"
         }
         else if (boredType === "relaxation"){
-            boredCarouselImage.src = "../images/relax.jpg"
+            boredCarouselImage.src = "./assets/images/relax.jpg"
         }
         else if (boredType === "social"){
-            boredCarouselImage.src = "../images/social.jpg"
+            boredCarouselImage.src = "./assets/images/social.jpg"
         };
         boredCarouselImage.classList = "rounded-lg transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl";
 
@@ -143,9 +139,9 @@ var seatFetch = function() {
         
             var carouselItem = document.createElement("div");
             if (i === 0){
-                carouselItem.classList = "carousel-item active relative float-left w-full";
+                carouselItem.classList = "carousel-item active relative float-left w-full overflow-auto";
             } else {
-                carouselItem.classList = "carousel-item relative float-left w-full";
+                carouselItem.classList = "carousel-item relative float-left w-full overflow-auto";
             }
             
             var carouselImg = document.createElement("img");
@@ -153,7 +149,7 @@ var seatFetch = function() {
             carouselImg.classList = "rounded-lg transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl";
 
             var carouselText = document.createElement("div");
-            carouselText.classList = "md:block absolute inset-x-1/4 text-center";
+            carouselText.classList = "md:block absolute text-center";
 
             var carouselEventTitle = document.createElement("h2");
             carouselEventTitle.className = "mt-12";
