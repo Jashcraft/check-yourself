@@ -15,9 +15,9 @@
 </head>
 
 <body class="box-border bg-neutral-600 font-serif">
-    <header class="hero rounded-lg h-15 bg-slate-500">
-        <div class="text-center text-amber-500 py-5 font-semibold italic">
-            <h1 class="app-title"><i class="fab checkmark"></i> Check Yourself </h1>
+    <header class="relative hero rounded-lg">
+        <img src="./assets/images/stacked-rocks.jpeg" alt="stacked rocks" class="h-1/3">
+        <h1 class="absolute inset-0 app-title text-center text-amber-500 text-xl font-semibold italic"><i class="fab checkmark"></i> Check Yourself </h1>
         </div>
     </header>
     <!-- find your location-->
@@ -28,7 +28,7 @@
                     <div class="row-1 ">
                         <h2 class="text-stone-300">Where are you?</h2>
                         <div class="row">
-                            <div class="py-3">
+                            <div class="py-2">
                                 <select name="state" id="states"></select>
                             </div>
                             <div>
@@ -62,7 +62,7 @@
             </div>
             <div id="right-suggestions-container" class="flex basis-1/3 flex-col">
                 <section>
-                    <div id="suggestions-container" class="w-3/12">
+                    <div id="suggestions-container" class="">
                         <div id="eventCarousel" class="carousel slide relative" data-bs-ride="carousel">
                             <div class="carousel-inner relative w-full ">
 

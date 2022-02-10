@@ -5,3 +5,7 @@ body {
 .bg-blue-400 {
     background-color: red;
 }
+
+h3 {
+    text-shadow: 0 0 2px #cf9b18;
+}
