@@ -1,6 +1,6 @@
 var stateSelectEl = document.querySelector('#states');
 var submitBtnEl = document.querySelector('#submit-city');
-var globalState  = stateSelectEl.value; //rename this
+var globalState = stateSelectEl.value; //rename this
 var cardsSection = document.querySelector("#left-card-container");
 var sidebarContainer = document.querySelector("#right-suggestions-container");
 var suggestionButtonEl = document.querySelector(".suggestionButton");
@@ -13,6 +13,99 @@ var todayDate = moment().format("L");
 //Data values for user info like state of residence and card info
 var userState = stateSelectEl.value;
 var userMood;
+
+
+
+var boredFetch = function () {
+    fetch("http://www.boredapi.com/api/activity")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+
+
+            var boredActivity = data.activity;
+            var boredAccessibility = data.accessibility;
+            var boredType = data.type;
+            var boredPrice = data.price;
+            var boredParticipants = data.participants;
+
+            console.log(boredActivity);
+            console.log(boredAccessibility);
+            console.log(boredType);
+            console.log(boredPrice);
+            console.log(boredParticipants);
+
+            var carouselItem = document.createElement("div");
+            if (i === 0) {
+                carouselItem.classList = "carousel-item active relative float-left w-full";
+            } else {
+                carouselItem.classList = "carousel-item relative float-left w-full";
+            }
+
+            boredCarouselImage = document.createElement("img")
+            if (boredType === "busywork") {
+                boredCarouselImage.src = "../images/busywork.jpg"
+            }
+            else if (boredType === "charity"){
+                boredCarouselImage.src = "../images/charity.jpg"
+            }
+            else if (boredType === "cooking"){
+                boredCarouselImage.src = "../images/coking.jpg"
+            }
+            else if (boredType === "diy"){
+                boredCarouselImage.src = "../images/diy.jpg"
+            }
+            else if (boredType === "educational"){
+                boredCarouselImage = "../images/educational.jpg"
+            }
+            else if (boredType === "music"){
+                boredCarouselImage.src = "../images/music.jpg"
+            }
+            else if (boredType === "recreational"){
+                boredCarouselImage.src = "../images/red.jpg"
+            }
+            else if (boredType === "relaxation"){
+                boredCarouselImage.src = "../images/relax.jpg"
+            }
+            else if (boredType === "social"){
+                boredCarouselImage.src = "../images/social.jpg"
+            };
+            boredCarouselImage.classList = "rounded-lg transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl";
+
+            var boredCarouselText = document.createElement("div");
+            boredCarouselText.classList = "md:block absolute inset-x-1/4 text-center";
+
+            var boredCarouselEventTitle = document.createElement("h2");
+            boredCarouselEventTitle.className = "mt-12";
+            boredCarouselEventTitle.textContent = boredActivity;
+
+            var boredCarouselPrice = document.createElement("h3");
+            boredCarouselPrice.textContent = "Price Range: " + boredPrice;
+
+            var boredCarouselRecommendedParticipants = document.createElement("h4");
+            boredCarouselRecommendedParticipants.textContent = "Recommended Participants: " + boredParticipants;
+
+            var boredCarouselAccessibility = document.createElement("p");
+            boredCarouselAccessibility.textContent = "Accessibility (0.0 - 1.0): " + boredAccessibility;
+
+            carouselItem.appendChild(boredCarouselImage);
+            boredCarouselText.appendChild(boredCarouselEventTitle);
+            boredCarouselText.appendChild(boredCarouselPrice);
+            boredCarouselText.appendChild(boredCarouselRecommendedParticipants);
+            boredCarouselText.appendChild(boredCarouselAccessibility);
+
+            carouselItem.appendChild(boredCarouselText);
+
+            $(".carousel-inner").append(carouselItem);
+        });
+
+    var boredActivity = data.boredActivity;
+    console.log(boredActivity);
+
+};
+
 
 var userMoodCards;
 if (JSON.parse(localStorage.getItem("moodCards")) === null) {
@@ -31,6 +124,8 @@ for (var i = 0; i < states.length; i++) {
     stateSelectEl.appendChild(optionEl);
 };
 
+
+//decprecated
 submitBtnEl.addEventListener('click', function (event) {
     // console.log("helloooo... Infini-dagger!!");
     event.preventDefault;
@@ -53,7 +148,7 @@ submitBtnEl.addEventListener('click', function (event) {
             return response.json();
         })
         .then(function(data){
-            console.log(data);
+
         });
 });
 
@@ -65,112 +160,23 @@ for (var i = 0; i < states.length; i++) {
     stateSelectEl.appendChild(optionEl);
 };
 
-// suggestionButtonEl.addEventListener('click', function (event) {
-//     // console.log("helloooo... Infini-dagger!!");
-//     event.preventDefault;
-//     $(".carousel-inner").empty();
-//     var stateVal = stateSelectEl.value;
 
-//     fetch("https://api.seatgeek.com/2/events/?venue.state=" + stateVal + "&client_id=MjU1NTAzMTF8MTY0MzU5OTc0MS41NjYxMzg1&client_secret=b63b8c19928eaec5bc232406dd1a3f9b736e95c54062f429dee6e000c044de9a&per_page=5")
-//         .then(function (response) {
-//             return response.json();
-//         })
-//         .then(function (data) {
-//             console.log(data);
-//             for (var i = 0; i < data.events.length; i++){
-//                 var eventTitle = data.events[i].title;
-//                 var eventTime = moment(data.events[i].datetime_local).format("dddd, MMMM Do YYYY, h:mm:ss a");
-//                 var venName = data.events[i].venue.name;
-//                 var venAddr = data.events[i].venue.address;
-//                 var venExtAddr = data.events[i].venue.extended_address;
-//                 var venUrl = data.events[i].venue.url;
-//                 var perfImg = data.events[i].performers[0].image;
-            
-            
-//                 var carouselItem = document.createElement("div");
-//                 if (i === 0){
-//                     carouselItem.classList = "carousel-item active relative float-left w-full";
-//                 } else {
-//                     carouselItem.classList = "carousel-item relative float-left w-full";
-//                 }
-                
-//                 var carouselImg = document.createElement("img");
-//                 carouselImg.src = perfImg;
-//                 carouselImg.classList = "rounded-lg transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl";
 
-//                 var carouselText = document.createElement("div");
-//                 carouselText.classList = "md:block absolute inset-x-1/4 text-center";
-
-//                 var carouselEventTitle = document.createElement("h2");
-//                 carouselEventTitle.className = "mt-12";
-//                 carouselEventTitle.textContent = eventTitle;
-
-//                 var carouselEventDate = document.createElement("h3");
-//                 carouselEventDate.textContent = eventTime;
-
-//                 var carouselVenueName = document.createElement("h4");
-//                 carouselVenueName.textContent = venName;
-
-//                 var carouselStreet = document.createElement("p");
-//                 carouselStreet.textContent = venAddr
-
-//                 var carouselCity = document.createElement("p");
-//                 carouselCity.textContent = venExtAddr;
-
-//                 var carouselUrl = document.createElement("a");
-//                 carouselUrl.href = venUrl;
-
-//                 var carouselTicketButton = document.createElement("button");
-//                 carouselTicketButton.type = "button";
-//                 carouselTicketButton.classList = "inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out"
-//                 carouselTicketButton.textContent = "Tickets";
-
-//                 carouselUrl.appendChild(carouselTicketButton);
-//                 carouselText.appendChild(carouselEventTitle);
-//                 carouselText.appendChild(carouselEventDate);
-//                 carouselText.appendChild(carouselVenueName);
-//                 carouselText.appendChild(carouselStreet);
-//                 carouselText.appendChild(carouselCity);
-//                 carouselText.appendChild(carouselUrl);
-
-//                 carouselItem.appendChild(carouselImg);
-//                 carouselItem.appendChild(carouselText);
-
-//                 $(".carousel-inner").append(carouselItem);
-//             };
-//         })
-
-//         .catch(err => {
-//             console.error(err);
-//         });
-
-//         fetch("http://www.boredapi.com/api/activity?type=relaxation")
-//         .then(function(response){
-//             return response.json();
-//         })
-//         .then(function(data){
-//             console.log(data);
-//         });
-
-// });
-
-//Handler for the cityButton on the intro screen
-
-var generateCard = function(moodText, moodScore) {
+var generateCard = function (moodText, moodScore) {
     //Generate the elements for the main div, the header, description, score, and button
     //div container
     var cardContainer = document.createElement("div");
-    cardContainer.setAttribute("class", "card");
+    cardContainer.setAttribute("class", "card border-solid border-white border-4");
 
     //card header
     var cardHeader = document.createElement("h3");
-    cardHeader.textContent = "Entry from "+todayDate;
+    cardHeader.textContent = "Entry from " + todayDate;
 
     //card brief description
     var briefDescription = moodText.split("");
     //Only display the first 50 characters of the user's description for a given day
     if (briefDescription.length > 150) {
-        briefDescription = briefDescription.splice(0, 150).join("")+"...";
+        briefDescription = briefDescription.splice(0, 150).join("") + "...";
     }
     else {
         briefDescription = briefDescription.join("");
@@ -180,7 +186,7 @@ var generateCard = function(moodText, moodScore) {
 
     //card score
     var cardScore = document.createElement("h3");
-    cardScore.textContent = "Mood Score: "+moodScore;
+    cardScore.textContent = "Mood Score: " + moodScore;
 
     //card button "See Suggestions"
     var suggestionButton = document.createElement("button");
@@ -194,94 +200,94 @@ var generateCard = function(moodText, moodScore) {
     cardContainer.appendChild(suggestionButton);
 
     //Add event listener
-    suggestionButton.addEventListener("click", function(data) {
+    suggestionButton.addEventListener("click", function (data) {
         console.log("clicked a suggestion button");
         console.log(briefDescription);
         // clears out existing crousel that may already be displayed 
         $(".carousel-inner").empty();
-    var stateVal = stateSelectEl.value;
+        var stateVal = stateSelectEl.value;
 
-    //
-    fetch("https://api.seatgeek.com/2/events/?venue.state=" + stateVal + "&client_id=MjU1NTAzMTF8MTY0MzU5OTc0MS41NjYxMzg1&client_secret=b63b8c19928eaec5bc232406dd1a3f9b736e95c54062f429dee6e000c044de9a&per_page=5")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-            for (var i = 0; i < data.events.length; i++){
-                var eventTitle = data.events[i].title;
-                var eventTime = moment(data.events[i].datetime_local).format("dddd, MMMM Do YYYY, h:mm:ss a");
-                var venName = data.events[i].venue.name;
-                var venAddr = data.events[i].venue.address;
-                var venExtAddr = data.events[i].venue.extended_address;
-                var venUrl = data.events[i].venue.url;
-                var perfImg = data.events[i].performers[0].image;
-            
-            
-                var carouselItem = document.createElement("div");
-                if (i === 0){
-                    carouselItem.classList = "carousel-item active relative float-left w-full";
-                } else {
-                    carouselItem.classList = "carousel-item relative float-left w-full";
-                }
-                
-                var carouselImg = document.createElement("img");
-                carouselImg.src = perfImg;
-                carouselImg.classList = "rounded-lg transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl";
+        //
+        fetch("https://api.seatgeek.com/2/events/?venue.state=" + stateVal + "&client_id=MjU1NTAzMTF8MTY0MzU5OTc0MS41NjYxMzg1&client_secret=b63b8c19928eaec5bc232406dd1a3f9b736e95c54062f429dee6e000c044de9a&per_page=5")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data);
+                for (var i = 0; i < data.events.length; i++) {
+                    var eventTitle = data.events[i].title;
+                    var eventTime = moment(data.events[i].datetime_local).format("dddd, MMMM Do YYYY, h:mm:ss a");
+                    var venName = data.events[i].venue.name;
+                    var venAddr = data.events[i].venue.address;
+                    var venExtAddr = data.events[i].venue.extended_address;
+                    var venUrl = data.events[i].venue.url;
+                    var perfImg = data.events[i].performers[0].image;
 
-                var carouselText = document.createElement("div");
-                carouselText.classList = "md:block absolute inset-x-1/4 text-center";
 
-                var carouselEventTitle = document.createElement("h2");
-                carouselEventTitle.className = "mt-12";
-                carouselEventTitle.textContent = eventTitle;
+                    var carouselItem = document.createElement("div");
+                    if (i === 0) {
+                        carouselItem.classList = "carousel-item active relative float-left w-full";
+                    } else {
+                        carouselItem.classList = "carousel-item relative float-left w-full";
+                    }
 
-                var carouselEventDate = document.createElement("h3");
-                carouselEventDate.textContent = eventTime;
+                    var carouselImg = document.createElement("img");
+                    carouselImg.src = perfImg;
+                    carouselImg.classList = "rounded-lg transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl";
 
-                var carouselVenueName = document.createElement("h4");
-                carouselVenueName.textContent = venName;
+                    var carouselText = document.createElement("div");
+                    carouselText.classList = "md:block absolute inset-x-1/4 text-center";
 
-                var carouselStreet = document.createElement("p");
-                carouselStreet.textContent = venAddr
+                    var carouselEventTitle = document.createElement("h2");
+                    carouselEventTitle.className = "mt-12";
+                    carouselEventTitle.textContent = eventTitle;
 
-                var carouselCity = document.createElement("p");
-                carouselCity.textContent = venExtAddr;
+                    var carouselEventDate = document.createElement("h3");
+                    carouselEventDate.textContent = eventTime;
 
-                var carouselUrl = document.createElement("a");
-                carouselUrl.href = venUrl;
+                    var carouselVenueName = document.createElement("h4");
+                    carouselVenueName.textContent = venName;
 
-                var carouselTicketButton = document.createElement("button");
-                carouselTicketButton.type = "button";
-                carouselTicketButton.classList = "inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out"
-                carouselTicketButton.textContent = "Tickets";
+                    var carouselStreet = document.createElement("p");
+                    carouselStreet.textContent = venAddr
 
-                carouselUrl.appendChild(carouselTicketButton);
-                carouselText.appendChild(carouselEventTitle);
-                carouselText.appendChild(carouselEventDate);
-                carouselText.appendChild(carouselVenueName);
-                carouselText.appendChild(carouselStreet);
-                carouselText.appendChild(carouselCity);
-                carouselText.appendChild(carouselUrl);
+                    var carouselCity = document.createElement("p");
+                    carouselCity.textContent = venExtAddr;
 
-                carouselItem.appendChild(carouselImg);
-                carouselItem.appendChild(carouselText);
+                    var carouselUrl = document.createElement("a");
+                    carouselUrl.href = venUrl;
 
-                $(".carousel-inner").append(carouselItem);
-            };
-        })
+                    var carouselTicketButton = document.createElement("button");
+                    carouselTicketButton.type = "button";
+                    carouselTicketButton.classList = "inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out"
+                    carouselTicketButton.textContent = "Tickets";
 
-        .catch(err => {
-            console.error(err);
-        });
+                    carouselUrl.appendChild(carouselTicketButton);
+                    carouselText.appendChild(carouselEventTitle);
+                    carouselText.appendChild(carouselEventDate);
+                    carouselText.appendChild(carouselVenueName);
+                    carouselText.appendChild(carouselStreet);
+                    carouselText.appendChild(carouselCity);
+                    carouselText.appendChild(carouselUrl);
+
+                    carouselItem.appendChild(carouselImg);
+                    carouselItem.appendChild(carouselText);
+
+                    $(".carousel-inner").append(carouselItem);
+                };
+            })
+
+            .catch(err => {
+                console.error(err);
+            });
 
         fetch("http://www.boredapi.com/api/activity?type=relaxation")
-        .then(function(response){
-            return response.json();
-        })
-        .then(function(data){
-            console.log(data);
-        });
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data);
+            });
 
     });
 
@@ -291,7 +297,7 @@ var generateCard = function(moodText, moodScore) {
 
 }
 
-var loadMoodForm = function() {
+var loadMoodForm = function () {
 
     //Create the new page structure...
     //Remove old elements from the page
@@ -310,7 +316,7 @@ var loadMoodForm = function() {
     //Add textarea "Describe your mood"
     var moodTextLabel = document.createElement("label");
     moodTextLabel.setAttribute("for", "moodTextArea");
-    moodTextLabel.setAttribute("id", "moodTextLabel"); 
+    moodTextLabel.setAttribute("id", "moodTextLabel");
     moodTextLabel.setAttribute("class", ""); //Set classes for the label
     moodTextLabel.textContent = "Describe your mood";
 
@@ -333,8 +339,8 @@ var loadMoodForm = function() {
     //Append options to select
     for (var i = 0; i < 5; i++) {
         var option = document.createElement("option");
-        option.setAttribute("value", i+1);
-        option.textContent = i+1;
+        option.setAttribute("value", i + 1);
+        option.textContent = i + 1;
         //Set styling with classes
         moodRating.appendChild(option);
     }
@@ -365,7 +371,7 @@ var loadMoodForm = function() {
 
     //Call the generateCard function with parameters for state, moodText, and moodScore
     //This should eventually be wired to a submit event listener, but for testing will be called.
-    introContainer.querySelector("#moodForm").addEventListener("submit", function(event) {
+    introContainer.querySelector("#moodForm").addEventListener("submit", function (event) {
         event.preventDefault();
         userMoodText = moodTextArea.value;
         userMood = moodRating.value;
@@ -373,12 +379,12 @@ var loadMoodForm = function() {
         // Clear the values for userMoodText and userMood
         moodTextArea.value = "";
         moodRating.value = ""
-        
+
         generateCard(userMoodText, userMood);
     });
 };
 
-var logCity = function() {
+var logCity = function () {
 
     //Log the city input to a variable so it can be accessed on future logins
     //This should eventually pull the value from the intro screen's form.
@@ -392,7 +398,7 @@ var cityButtonEl = document.querySelector("#submit-city");
 cityButtonEl.addEventListener("click", logCity);
 
 //Listener for the "see suggestions" buttons within each card
-// introContainer.addEventListener("click", function(event) {   
+// introContainer.addEventListener("click", function(event) {
 //     console.log(event);
 //     if (event.target === document.querySelector(".suggestionButton")) {
 //         //function call here
