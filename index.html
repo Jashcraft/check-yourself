@@ -6,8 +6,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="">
-    <link rel="stylesheet" href="./assets/css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
@@ -15,14 +15,14 @@
 </head>
 
 <body>
-    <header class="hero bg-yellow-900 rounded-md">
+    <header class="hero bg-amber-800 rounded-md text-xl">
         <div class="tex-align-center text-white">
             <h1 class="app-title tex-align-center text-shadow-gold"><i class="fab checkmark"></i> check Yourself</h1>
         </div>
     </header>
     <!-- find your location-->
     <main>
-        <section class="bg-lime-900 rounded-md" id="intro-container">
+        <section class="bg-teal-400 rounded-md" id="intro-container">
             <div id="intro-content" class="container align-items-center">
                 <div class="text-center row align-items-around">
                     <div class="row-1">
@@ -31,7 +31,7 @@
                             <div>
                                 <select name="state" id="states">
                                 </select>
-                                <button type="button color-gold" id="submit-city">Submit</button>
+                                <button id="submit-city" class="border-2 border-black" style="background-color: goldenrod;">Submit</button>
                             </div>
                         </div>
 
@@ -100,6 +100,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="./assets/js/states.js"></script>
     <script src="./assets/js/script.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
 </body>
 

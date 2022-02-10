@@ -1,8 +1,22 @@
 body {
-    background-color:blanchedalmond;
+    background-color: #71BCBB;
     text-align:center;
     flex-wrap: wrap;
-    text-shadow: solid  gold;
-    border-color: solid goldenrod
+    text-shadow: solid  #4726da;
 };
+
+header{
+    min-height: 20vh !important;
+}
+
+button {
+    background-color:goldenrod !important;
+    color: white;
+    font-weight: bold;
+    border-color: black;
+}
+
+carousel{
+    position:center;
+}
 
