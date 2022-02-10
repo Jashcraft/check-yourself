@@ -12,11 +12,11 @@ var todayDate = moment().format("L");
 
 //LocalStorage handling for persistent card data
 var userMoodCards;
-if (JSON.parse(localStorage.getItem("moodCards")) === null) {
+if (JSON.parse(localStorage.getItem("cards")) === null) {
     userMoodCards = [];
 }
 else {
-    userMoodCards = JSON.parse(localStorage.getItem("moodCards"));
+    userMoodCards = JSON.parse(localStorage.getItem("cards"));
 }
 
 for (var i = 0; i < states.length; i++) {
@@ -126,12 +126,64 @@ var seatFetch = function() {
 
 //Functions to handle localStorage
 var loadCards = function() {
-    console.log(JSON.parse(localStorage.getItem("cards")));
+
+    //Clear any previously-appended elements within the cardsDiv section by removing and
+    //replacing cardsDiv
+    cardsSection.removeChild(document.querySelector("#cardsDiv"));
+    var cardsDiv = document.createElement("div");
+    cardsDiv.setAttribute("id", "cardsDiv");
+    cardsDiv.setAttribute("class", "min-w-full flex flex-wrap justify-center p-2 bg-red-200");
+    cardsSection.appendChild(cardsDiv);
+
+    //For each index in the localStorage cards array, generate a card and append to cardsDiv
+    console.log(userMoodCards);
+    for (var i = 0; i < userMoodCards.length; i++) {
+        var cardData = userMoodCards[i];
+        console.log("cardData.date: "+cardData.date);
+        console.log("cardData.score: "+cardData.score);
+        console.log("cardData.description: "+cardData.description);
+
+        //Create card elements
+
+        var card = document.createElement("div");
+        card.setAttribute("class", "card basis-full md:basis-1/3 flex-wrap shrink-0 p-3 bg-blue-300 w-1/4 flex flex-col justify-between items-center m-1");
+        
+        var cardDate = document.createElement("h3");
+        cardDate.textContent = "Entry from "+cardData.date;
+        cardDate.setAttribute("class", "text-lg p-2 font-bold italic bg-blue-400 text-center w-100% text-white");
+
+        var cardContent = document.createElement("p");
+        cardContent.textContent = cardData.description;
+        cardContent.setAttribute("class", "");
+
+        var cardScore = document.createElement("h3");
+        cardScore.textContent = "Mood Score: "+cardData.score;
+        cardScore.setAttribute("class", "");
+
+        var suggestionButton = document.createElement("button");
+        suggestionButton.textContent = "See Suggestions";
+        suggestionButton.setAttribute("class", "suggestionButton bg-blue-500 font-bold p-2 my-2 rounded hover:bg-blue-800 text-white");
+
+
+        //Append the items to a card
+        card.append(cardDate);
+        card.append(cardContent);
+        card.append(cardScore);
+        card.append(suggestionButton);
+
+        //Append to the cardsDiv
+        cardsDiv.append(card);
+
+        //Recreate the sidebar
+        generateSidebar();
+
+        //Event handler for card suggestions
+
+    }
 };
 
 var storeCards = function() {
     localStorage.setItem("cards", JSON.stringify(userMoodCards));
-    loadCards();
 };
 
 //Function that generates all the elements for the sidebar
@@ -305,6 +357,9 @@ var loadMoodForm = function() {
         moodTextArea.value = "";
         moodRating.value = ""
     });
+
+    //Load any cards that may exist in localStorage
+    loadCards();
 };
 
 var logState = function() {
