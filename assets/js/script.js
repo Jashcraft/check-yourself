@@ -178,6 +178,20 @@ var loadCards = function() {
         generateSidebar();
 
         //Event handler for card suggestions
+        //Add event listener
+        suggestionButton.addEventListener("click", function(data) {
+        // clears out existing crousel that may already be displayed 
+        $(".carousel-inner").empty();
+
+        //Evaluate user mood to determine which fetch is used to populate the card
+        if (cardData.score >= 3) {
+            seatFetch();
+        }
+        else {
+            boredFetch();
+        }
+
+    });
 
     }
 };
