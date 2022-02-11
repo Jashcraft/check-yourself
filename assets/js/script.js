@@ -28,7 +28,7 @@ for (var i = 0; i < states.length; i++) {
 };
 
 var boredFetch = function() {
-    fetch("http://www.boredapi.com/api/activity")
+    fetch("https://www.boredapi.com/api/activity")
     .then(function(response){
         return response.json();
     })
