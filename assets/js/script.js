@@ -204,19 +204,15 @@ var loadCards = function() {
     cardsSection.removeChild(document.querySelector("#cardsDiv"));
     var cardsDiv = document.createElement("div");
     cardsDiv.setAttribute("id", "cardsDiv");
-    cardsDiv.setAttribute("class", "min-w-full flex flex-wrap justify-center p-2 bg-slate-400");
+    cardsDiv.setAttribute("class", "min-w-full flex flex-wrap justify-center bg-slate-400");
     cardsSection.appendChild(cardsDiv);
 
     //For each index in the localStorage cards array, generate a card and append to cardsDiv
     console.log(userMoodCards);
     for (var i = 0; i < userMoodCards.length; i++) {
         var cardData = userMoodCards[i];
-        console.log("cardData.date: "+cardData.date);
-        console.log("cardData.score: "+cardData.score);
-        console.log("cardData.description: "+cardData.description);
 
         //Create card elements
-
         var card = document.createElement("div");
         card.setAttribute("class", "card basis-full md:basis-1/3 flex-wrap shrink-0 p-3 bg-neutral-600 w-1/4 flex flex-col justify-between items-center m-1");
         
@@ -283,7 +279,6 @@ var generateSidebar = function() {
     //Check whether the sidebarTitle already exists...
     //If not, create it and style it
     if (!document.querySelector("#sidebar-title")) {
-        console.log("No sidebar h3 elements.");
         var sidebarSection = $(sidebarContainer).children("section");
         var sidebarTitle = document.createElement("h3");
         sidebarContainer.setAttribute("class", "bg-slate-300 border-l-4 border-slate-600 w-1/3");
@@ -360,8 +355,6 @@ function generateCard(moodText, moodScore) {
 
     //Add the contents of the mood card to localStorage
     userMoodCards.push({date: todayDate, score: moodScore, description: moodText});
-    console.log("Appended to userMoodCards.  Now contains:");
-    console.log(userMoodCards);
     storeCards();
 
     //Append the card container to the cardsDiv element
@@ -456,8 +449,9 @@ var loadMoodForm = function () {
         moodRating.value = ""
     });
 
-    //Load any cards that may exist in localStorage
+    //Load any cards that exist in localStorage
     loadCards();
+    
 };
 
 var logState = function() {
@@ -478,7 +472,6 @@ var logState = function() {
 
 //If the user has not already provided their state of residence, intro screen should appear.
 if (JSON.parse(localStorage.getItem("userState")) === null) {
-    console.log("No state has been selected");
 }
 //Otherwise, it should load the existing cards from localStorage
 else {
