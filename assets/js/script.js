@@ -28,13 +28,85 @@ for (var i = 0; i < states.length; i++) {
 };
 
 var boredFetch = function() {
-    fetch("http://www.boredapi.com/api/activity?type=cooking")
+    fetch("http://www.boredapi.com/api/activity")
     .then(function(response){
         return response.json();
     })
     .then(function(data){
         console.log("Calling boredAPI...")
         console.log(data);
+        
+
+        var boredActivity = data.activity;
+        var boredAccessibility = data.accessibility;
+        var boredType = data.type;
+        var boredPrice = data.price;
+        var boredParticipants = data.participants;
+
+        console.log(boredActivity);
+        console.log(boredAccessibility);
+        console.log(boredType);
+        console.log(boredPrice);
+        console.log(boredParticipants);
+
+        var carouselItem = document.createElement("div");
+        carouselItem.classList = "carousel-item active relative float-left w-full overflow-auto";
+        //debugger
+        boredCarouselImage = document.createElement("img")
+        if (boredType === "busywork") {
+            boredCarouselImage.src = "./assets/images/busywork.jpg"
+        }
+        else if (boredType === "charity"){
+            boredCarouselImage.src = "./assets/images/charity.jpg"
+        }
+        else if (boredType === "cooking"){
+            boredCarouselImage.src = "./assets/images/coking.jpg"
+        }
+        else if (boredType === "diy"){
+            boredCarouselImage.src = "./assets/images/diy.jpg"
+        }
+        else if (boredType === "educational"){
+            boredCarouselImage = "./assets/images/education.jpg"
+        }
+        else if (boredType === "music"){
+            boredCarouselImage.src = "./assets/images/music.jpg"
+        }
+        else if (boredType === "recreational"){
+            boredCarouselImage.src = "./assets/images/red.jpg"
+        }
+        else if (boredType === "relaxation"){
+            boredCarouselImage.src = "./assets/images/relax.jpg"
+        }
+        else if (boredType === "social"){
+            boredCarouselImage.src = "./assets/images/social.jpg"
+        };
+        boredCarouselImage.classList = "rounded-lg transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl";
+
+        var boredCarouselText = document.createElement("div");
+        boredCarouselText.classList = "md:block absolute inset-x-1/4 text-center";
+
+        var boredCarouselEventTitle = document.createElement("h2");
+        boredCarouselEventTitle.className = "mt-12";
+        boredCarouselEventTitle.textContent = boredActivity;
+
+        var boredCarouselPrice = document.createElement("h3");
+        boredCarouselPrice.textContent = "Price Range: " + boredPrice;
+
+        var boredCarouselRecommendedParticipants = document.createElement("h4");
+        boredCarouselRecommendedParticipants.textContent = "Recommended Participants: " + boredParticipants;
+
+        var boredCarouselAccessibility = document.createElement("p");
+        boredCarouselAccessibility.textContent = "Accessibility (0.0 - 1.0): " + boredAccessibility;
+
+        carouselItem.appendChild(boredCarouselImage);
+        boredCarouselText.appendChild(boredCarouselEventTitle);
+        boredCarouselText.appendChild(boredCarouselPrice);
+        boredCarouselText.appendChild(boredCarouselRecommendedParticipants);
+        boredCarouselText.appendChild(boredCarouselAccessibility);
+
+        carouselItem.appendChild(boredCarouselText);
+
+        $(".carousel-inner").append(carouselItem);
     });
 }
 
@@ -67,9 +139,9 @@ var seatFetch = function() {
         
             var carouselItem = document.createElement("div");
             if (i === 0){
-                carouselItem.classList = "carousel-item active relative float-left w-full";
+                carouselItem.classList = "carousel-item active relative float-left w-full overflow-auto";
             } else {
-                carouselItem.classList = "carousel-item relative float-left w-full";
+                carouselItem.classList = "carousel-item relative float-left w-full overflow-auto";
             }
             
             var carouselImg = document.createElement("img");
@@ -77,7 +149,7 @@ var seatFetch = function() {
             carouselImg.classList = "rounded-lg transition-shadow ease-in-out duration-300 shadow-none hover:shadow-xl";
 
             var carouselText = document.createElement("div");
-            carouselText.classList = "md:block absolute inset-x-1/4 text-center";
+            carouselText.classList = "md:block absolute text-center";
 
             var carouselEventTitle = document.createElement("h2");
             carouselEventTitle.className = "mt-12";
