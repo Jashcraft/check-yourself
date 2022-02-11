@@ -132,7 +132,7 @@ var loadCards = function() {
     cardsSection.removeChild(document.querySelector("#cardsDiv"));
     var cardsDiv = document.createElement("div");
     cardsDiv.setAttribute("id", "cardsDiv");
-    cardsDiv.setAttribute("class", "min-w-full flex flex-wrap justify-center p-2 bg-slate-400");
+    cardsDiv.setAttribute("class", "min-w-full flex flex-wrap justify-center bg-slate-400");
     cardsSection.appendChild(cardsDiv);
 
     //For each index in the localStorage cards array, generate a card and append to cardsDiv
@@ -384,8 +384,9 @@ var loadMoodForm = function() {
         moodRating.value = ""
     });
 
-    //Load any cards that may exist in localStorage
+    //Load any cards that exist in localStorage
     loadCards();
+    
 };
 
 var logState = function() {
