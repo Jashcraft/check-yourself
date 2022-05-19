@@ -293,13 +293,7 @@ var generateSidebar = function() {
 }
 
 
-<<<<<<< HEAD
-
-
-var generateCard = function(moodText, moodScore) {
-=======
 function generateCard(moodText, moodScore) {
->>>>>>> develop
     //Generate the elements for the main div, the header, description, score, and button
     //div container
     var cardContainer = document.createElement("div");
