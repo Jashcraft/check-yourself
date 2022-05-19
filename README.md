@@ -20,9 +20,9 @@ Clone the repo and open the index.html in your browser OR click Here to use the 
 On the landing page, choose what state you are in. Once this is selected, you will have the option to log some notes about your mood as well as give it a score from 1-5 (1 being poor mood, 5 being an excellent mood). Once this is saved it will be moved into a card where you can click 'see suggestions' and on the right you should see some activities in your area to go with your mood. The Application also uses local storage so if you close the link and re-open it you should still see your previous moods.
 
 ## Contributors
-[_Jonathan Williams_]
-[_Jonathon Ashcraft_]
-[_Griffin Woodson_]
+- [_Jonathan Williams_]
+- [_Jonathon Ashcraft_]
+- [_Griffin Woodson_]
 
 ## Testing
 N/A
